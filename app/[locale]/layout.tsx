@@ -35,7 +35,8 @@ export default async function LocaleLayout({
 
   const messages = await getMessages();
 
-  const isRTL = locale === 'ar-AE';
+  // Support all Arabic language variants for RTL
+  const isRTL = locale.startsWith('ar');
 
   return (
     <html lang={locale} dir={isRTL ? 'rtl' : 'ltr'} className={inter.variable}>

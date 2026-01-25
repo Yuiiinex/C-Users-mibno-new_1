@@ -13,6 +13,7 @@ export default function Navbar() {
   const t = useTranslations('nav');
   const tLang = useTranslations('language');
   const locale = useLocale() as Locale;
+  const isRTL = locale.startsWith('ar');
 
   useEffect(() => {
     const handleScroll = () => {
@@ -44,9 +45,9 @@ export default function Navbar() {
       <div className="w-full px-8 relative">
         <div className="flex items-center justify-between h-20">
           {/* Left Side: Logo and Navigation */}
-          <div className="flex items-center space-x-8 flex-1">
+          <div className={`flex items-center ${isRTL ? 'space-x-0 space-x-reverse' : 'space-x-8'} flex-1`}>
             {/* Logo */}
-            <Link href="/" className="flex items-center space-x-2">
+            <Link href="/" className={`flex items-center ${isRTL ? 'ml-8' : 'mr-8'}`}>
               <motion.div
                 whileHover={{ scale: 1.05 }}
                 className="text-2xl font-bold text-white tracking-tight"
@@ -57,7 +58,7 @@ export default function Navbar() {
             </Link>
 
             {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center space-x-8">
+            <div className={`hidden md:flex items-center ${isRTL ? 'space-x-0 space-x-reverse' : 'space-x-8'} ${isRTL ? 'mr-8' : 'ml-8'}`}>
               {navItems.map((item, index) => (
                 <motion.div
                   key={item.href}
@@ -67,7 +68,9 @@ export default function Navbar() {
                 >
                   <Link
                     href={item.href}
-                    className="text-white hover:text-luxury-gold transition-colors duration-200 font-medium text-sm uppercase tracking-wider"
+                    className={`px-4 py-2 text-white hover:text-luxury-gold transition-colors duration-200 font-medium text-base uppercase tracking-wider ${
+                      isRTL ? 'ml-4' : 'mr-4'
+                    }`}
                   >
                     {item.label}
                   </Link>
@@ -81,7 +84,7 @@ export default function Navbar() {
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="md:hidden text-white focus:outline-none mr-4"
+              className={`md:hidden text-white focus:outline-none ${isRTL ? 'ml-4' : 'mr-4'}`}
               aria-label="Toggle menu"
             >
               <svg
@@ -101,28 +104,28 @@ export default function Navbar() {
               </svg>
             </button>
             
-            {/* Language Switcher - Always visible, pushed to extreme right */}
-            <div className="absolute right-8">
+            {/* Language Switcher - Position based on RTL */}
+            <div className={`absolute ${isRTL ? 'left-8' : 'right-8'}`}>
               <LanguageSwitcher />
             </div>
           </div>
         </div>
 
-        {/* Mobile Menu */}
-        {isMobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            className="md:hidden pb-4 border-t border-white/10 mt-4"
-          >
+          {/* Mobile Menu */}
+          {isMobileMenuOpen && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: 'auto' }}
+              exit={{ opacity: 0, height: 0 }}
+              className={`md:hidden pb-4 border-t border-white/10 mt-4 ${isRTL ? 'pr-4' : 'pl-4'}`}
+            >
             <div className="flex flex-col space-y-4 pt-4">
               {navItems.map((item) => (
                 <Link
                   key={item.href}
                   href={item.href}
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="text-white/90 hover:text-luxury-gold transition-colors duration-200 font-medium text-sm uppercase tracking-wider"
+                  className="block py-3 text-white/90 hover:text-luxury-gold transition-colors duration-200 font-medium text-base uppercase tracking-wider"
                 >
                   {item.label}
                 </Link>
