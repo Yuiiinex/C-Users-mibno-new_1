@@ -42,12 +42,36 @@ export default function Navbar() {
           : 'bg-transparent'
       }`}
     >
-      <div className="w-full px-8 relative">
+      <div className="w-full px-4 sm:px-6 relative">
         <div className="flex items-center justify-between h-20">
-          {/* Left Side: Logo and Navigation */}
-          <div className={`flex items-center ${isRTL ? 'space-x-0 space-x-reverse' : 'space-x-8'} flex-1`}>
+          <div className="flex items-center w-full">
             {/* Logo */}
-            <Link href="/" className={`flex items-center ${isRTL ? 'ml-8' : 'mr-8'}`}>
+            <div className="flex items-center flex-1">
+              {!isRTL && (
+                <button
+                  onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                  className="md:hidden text-white focus:outline-none mr-4"
+                  aria-label="Toggle menu"
+                >
+                  <svg
+                    className="w-6 h-6"
+                    fill="none"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    {isMobileMenuOpen ? (
+                      <path d="M6 18L18 6M6 6l12 12" />
+                    ) : (
+                      <path d="M4 6h16M4 12h16M4 18h16" />
+                    )}
+                  </svg>
+                </button>
+              )}
+              
+              <Link href="/" className="flex items-center">
               <motion.div
                 whileHover={{ scale: 1.05 }}
                 className="text-2xl font-bold text-white tracking-tight"
@@ -56,6 +80,31 @@ export default function Navbar() {
                 <span className="text-white">LUXE</span>
               </motion.div>
             </Link>
+
+            {isRTL && (
+              <button
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                className="md:hidden text-white focus:outline-none mr-4"
+                aria-label="Toggle menu"
+              >
+                <svg
+                  className="w-6 h-6"
+                  fill="none"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  {isMobileMenuOpen ? (
+                    <path d="M6 18L18 6M6 6l12 12" />
+                  ) : (
+                    <path d="M4 6h16M4 12h16M4 18h16" />
+                  )}
+                </svg>
+              </button>
+            )}
+            </div>
 
             {/* Desktop Navigation */}
             <div className={`hidden md:flex items-center ${isRTL ? 'space-x-0 space-x-reverse' : 'space-x-8'} ${isRTL ? 'mr-8' : 'ml-8'}`}>
@@ -79,33 +128,10 @@ export default function Navbar() {
             </div>
           </div>
 
-          {/* Right Side: Language Switcher and Mobile Menu */}
+          {/* Right Side: Language Switcher */}
           <div className="flex items-center">
-            {/* Mobile Menu Button */}
-            <button
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className={`md:hidden text-white focus:outline-none ${isRTL ? 'ml-4' : 'mr-4'}`}
-              aria-label="Toggle menu"
-            >
-              <svg
-                className="w-6 h-6"
-                fill="none"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                {isMobileMenuOpen ? (
-                  <path d="M6 18L18 6M6 6l12 12" />
-                ) : (
-                  <path d="M4 6h16M4 12h16M4 18h16" />
-                )}
-              </svg>
-            </button>
-            
             {/* Language Switcher - Position based on RTL */}
-            <div className={`absolute ${isRTL ? 'left-8' : 'right-8'}`}>
+            <div className={`${isRTL ? 'mr-4' : 'ml-4'}`}>
               <LanguageSwitcher />
             </div>
           </div>
