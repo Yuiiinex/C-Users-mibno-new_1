@@ -1,0 +1,81 @@
+{
+  "nav": {
+    "home": "Home",
+    "models": "Models",
+    "brand": "Brand",
+    "experience": "Experience",
+    "contact": "Contact"
+  },
+  "language": {
+    "switch": "Switch language"
+  },
+  "home": {
+    "hero": {
+      "title": "Automotive Excellence",
+      "subtitle": "Discover the art of performance",
+      "cta": "Explore Collection"
+    },
+    "featured": {
+      "title": "Exceptional Models",
+      "subtitle": "Where engineering meets elegance"
+    },
+    "brand": {
+      "title": "A Legend in Motion",
+      "description": "For decades, we've pushed the boundaries of automotive innovation, creating vehicles that transcend mere functionality to become works of art on wheels."
+    }
+  },
+  "models": {
+    "title": "Our Collection",
+    "subtitle": "Each model embodies perfection",
+    "specs": {
+      "power": "Power",
+      "topSpeed": "Top Speed",
+      "acceleration": "0-100 km/h",
+      "engine": "Engine"
+    },
+    "viewDetails": "View Details"
+  },
+  "brand": {
+    "title": "Our Heritage",
+    "subtitle": "A passion for excellence",
+    "sections": {
+      "heritage": {
+        "title": "Heritage",
+        "description": "Our history is woven with victories, innovations, and an unwavering quest for perfection."
+      },
+      "innovation": {
+        "title": "Innovation",
+        "description": "We constantly push the boundaries of automotive technology to create the future."
+      },
+      "craftsmanship": {
+        "title": "Craftsmanship",
+        "description": "Each vehicle is the result of meticulous craftsmanship and unparalleled attention to detail."
+      }
+    }
+  },
+  "contact": {
+    "title": "Contact Us",
+    "subtitle": "We're here to answer your questions",
+    "form": {
+      "name": "Name",
+      "email": "Email",
+      "phone": "Phone",
+      "message": "Message",
+      "submit": "Send",
+      "sending": "Sending...",
+      "success": "Message sent successfully",
+      "error": "An error occurred"
+    },
+    "info": {
+      "address": "Address",
+      "phone": "Phone",
+      "email": "Email",
+      "hours": "Opening Hours"
+    }
+  },
+  "footer": {
+    "follow": "Follow Us",
+    "rights": "All rights reserved"
+  }
+}
+

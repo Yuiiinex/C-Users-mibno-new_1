@@ -1,0 +1,81 @@
+{
+  "nav": {
+    "home": "Startseite",
+    "models": "Modelle",
+    "brand": "Marke",
+    "experience": "Erlebnis",
+    "contact": "Kontakt"
+  },
+  "home": {
+    "hero": {
+      "title": "Automobile Exzellenz",
+      "subtitle": "Entdecken Sie die Kunst der Performance",
+      "cta": "Kollektion erkunden"
+    },
+    "featured": {
+      "title": "Außergewöhnliche Modelle",
+      "subtitle": "Wo Ingenieurskunst auf Eleganz trifft"
+    },
+    "brand": {
+      "title": "Eine Legende in Bewegung",
+      "description": "Seit Jahrzehnten erweitern wir die Grenzen der Automobilinnovation und schaffen Fahrzeuge, die über bloße Funktionalität hinausgehen und zu Kunstwerken auf Rädern werden."
+    }
+  },
+  "models": {
+    "title": "Unsere Kollektion",
+    "subtitle": "Jedes Modell verkörpert Perfektion",
+    "specs": {
+      "power": "Leistung",
+      "topSpeed": "Höchstgeschwindigkeit",
+      "acceleration": "0-100 km/h",
+      "engine": "Motor"
+    },
+    "viewDetails": "Details anzeigen"
+  },
+  "brand": {
+    "title": "Unser Erbe",
+    "subtitle": "Eine Leidenschaft für Exzellenz",
+    "sections": {
+      "heritage": {
+        "title": "Erbe",
+        "description": "Unsere Geschichte ist mit Siegen, Innovationen und einem unerschütterlichen Streben nach Perfektion verwoben."
+      },
+      "innovation": {
+        "title": "Innovation",
+        "description": "Wir erweitern ständig die Grenzen der Automobiltechnologie, um die Zukunft zu gestalten."
+      },
+      "craftsmanship": {
+        "title": "Handwerkskunst",
+        "description": "Jedes Fahrzeug ist das Ergebnis sorgfältiger Handwerkskunst und unvergleichlicher Aufmerksamkeit für Details."
+      }
+    }
+  },
+  "contact": {
+    "title": "Kontaktieren Sie uns",
+    "subtitle": "Wir sind hier, um Ihre Fragen zu beantworten",
+    "form": {
+      "name": "Name",
+      "email": "E-Mail",
+      "phone": "Telefon",
+      "message": "Nachricht",
+      "submit": "Senden",
+      "sending": "Wird gesendet...",
+      "success": "Nachricht erfolgreich gesendet",
+      "error": "Ein Fehler ist aufgetreten"
+    },
+    "info": {
+      "address": "Adresse",
+      "phone": "Telefon",
+      "email": "E-Mail",
+      "hours": "Öffnungszeiten"
+    }
+  },
+  "footer": {
+    "follow": "Folgen Sie uns",
+    "rights": "Alle Rechte vorbehalten"
+  },
+  "language": {
+    "switch": "Sprache wechseln"
+  }
+}
+

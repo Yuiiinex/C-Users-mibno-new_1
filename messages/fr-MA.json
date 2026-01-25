@@ -1,0 +1,81 @@
+{
+  "nav": {
+    "home": "Accueil",
+    "models": "Modèles",
+    "brand": "Marque",
+    "experience": "Expérience",
+    "contact": "Contact"
+  },
+  "language": {
+    "switch": "Changer de langue"
+  },
+  "home": {
+    "hero": {
+      "title": "L'Excellence Automobile",
+      "subtitle": "Découvrez l'art de la performance",
+      "cta": "Explorer la Collection"
+    },
+    "featured": {
+      "title": "Modèles d'Exception",
+      "subtitle": "L'ingénierie rencontre l'élégance"
+    },
+    "brand": {
+      "title": "Une Légende en Mouvement",
+      "description": "Depuis des décennies, nous repoussons les limites de l'innovation automobile, créant des véhicules qui transcendent la simple fonctionnalité pour devenir des œuvres d'art sur roues."
+    }
+  },
+  "models": {
+    "title": "Notre Collection",
+    "subtitle": "Chaque modèle incarne la perfection",
+    "specs": {
+      "power": "Puissance",
+      "topSpeed": "Vitesse max",
+      "acceleration": "0-100 km/h",
+      "engine": "Moteur"
+    },
+    "viewDetails": "Voir les détails"
+  },
+  "brand": {
+    "title": "Notre Héritage",
+    "subtitle": "Une passion pour l'excellence",
+    "sections": {
+      "heritage": {
+        "title": "Héritage",
+        "description": "Notre histoire est tissée de victoires, d'innovations et d'une quête inébranlable de la perfection."
+      },
+      "innovation": {
+        "title": "Innovation",
+        "description": "Nous repoussons constamment les limites de la technologie automobile pour créer l'avenir."
+      },
+      "craftsmanship": {
+        "title": "Savoir-faire",
+        "description": "Chaque véhicule est le résultat d'un savoir-faire artisanal méticuleux et d'une attention aux détails inégalée."
+      }
+    }
+  },
+  "contact": {
+    "title": "Contactez-nous",
+    "subtitle": "Nous sommes là pour répondre à vos questions",
+    "form": {
+      "name": "Nom",
+      "email": "Email",
+      "phone": "Téléphone",
+      "message": "Message",
+      "submit": "Envoyer",
+      "sending": "Envoi en cours...",
+      "success": "Message envoyé avec succès",
+      "error": "Une erreur s'est produite"
+    },
+    "info": {
+      "address": "Adresse",
+      "phone": "Téléphone",
+      "email": "Email",
+      "hours": "Heures d'ouverture"
+    }
+  },
+  "footer": {
+    "follow": "Suivez-nous",
+    "rights": "Tous droits réservés"
+  }
+}
+
