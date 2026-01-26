@@ -11,15 +11,16 @@ export default function Hero() {
     <section className="relative h-screen flex items-center justify-center overflow-hidden">
       {/* Background Image/Video Placeholder */}
       <div className="absolute inset-0 z-0">
-        <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat bg-fixed"
-          style={{
-            backgroundImage: 'url(https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=1920&h=1080&fit=crop)',
-          }}
-        />
-        <div className="absolute inset-0 bg-luxury-darker/70" />
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-luxury-darker/50 to-luxury-darker" />
-      </div>
+  <div
+    className="absolute inset-0 bg-cover bg-center bg-no-repeat bg-fixed"
+    style={{
+      backgroundImage: `url(/images/image_hero.jpg)`,
+    }}
+  />
+  <div className="absolute inset-0 bg-luxury-darker/10" />
+  <div className="absolute inset-0 bg-gradient-to-b from-transparent via-luxury-darker/50 to-luxury-darker" />
+</div>
+
 
       {/* Fixed social links on the right side */}
       <div className="hidden md:flex fixed right-6 top-1/2 -translate-y-1/2 z-20 flex-col space-y-4">
@@ -65,7 +66,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-6 tracking-tight"
+            className="text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-6 tracking-tight whitespace-nowrap"
           >
             {t('title')}
           </motion.h1>

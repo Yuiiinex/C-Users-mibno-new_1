@@ -4,6 +4,7 @@ export interface Car {
   model: string;
   description: string;
   image: string;
+  video?: string;
   specs: {
     power: string;
     topSpeed: string;
@@ -88,11 +89,40 @@ export const cars: Car[] = [
     model: '2024',
     description: 'L\'avenir de la performance. Technologie de pointe et design révolutionnaire.',
     image: 'https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?w=1200&h=800&fit=crop',
+    video: 'https://www.w3schools.com/html/mov_bbb.mp4',
     specs: {
       power: '950 CV',
       topSpeed: '400 km/h',
       acceleration: '2.2s',
       engine: 'V12 Hybrid',
+    },
+  },
+  {
+    id: '7',
+    name: 'Electric Storm',
+    model: '2024',
+    description: 'Puissance électrique silencieuse avec accélération instantanée.',
+    image: 'https://images.unsplash.com/photo-1617654112368-30e935884c57?w=1200&h=800&fit=crop',
+    video: 'https://www.w3schools.com/html/mov_bbb.mp4',
+    specs: {
+      power: '800 CV',
+      topSpeed: '350 km/h',
+      acceleration: '2.0s',
+      engine: 'Électrique',
+    },
+  },
+  {
+    id: '8',
+    name: 'Classic Heritage',
+    model: '2024',
+    description: 'Design intemporel rencontre performance moderne.',
+    image: 'https://images.unsplash.com/photo-1553440719-a8e5c21ab612?w=1200&h=800&fit=crop',
+    video: 'https://www.w3schools.com/html/mov_bbb.mp4',
+    specs: {
+      power: '550 CV',
+      topSpeed: '280 km/h',
+      acceleration: '4.0s',
+      engine: 'V6 Biturbo',
     },
   },
 ];

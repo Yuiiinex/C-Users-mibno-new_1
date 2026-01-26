@@ -37,7 +37,7 @@ export default async function ModelsPage() {
       {/* Cars Grid */}
       <section className="py-16 px-4 sm:px-6 lg:px-8 bg-luxury-darker">
         <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3">
             {cars.map((car, index) => (
               <CarCard key={car.id} car={car} index={index} />
             ))}
