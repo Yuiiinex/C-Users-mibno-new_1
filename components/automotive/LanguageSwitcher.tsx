@@ -2,13 +2,14 @@
 
 import { useState } from 'react';
 import { useLocale } from 'next-intl';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { locales, localeNames, type Locale } from '@/i18n';
 import FlagButton from './FlagButton';
 
 export default function LanguageSwitcher() {
   const locale = useLocale() as Locale;
   const pathname = usePathname();
+  const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
   const isRTL = locale.startsWith('ar');
 
@@ -42,20 +43,28 @@ export default function LanguageSwitcher() {
     const cleanPath = pathWithoutLocale === '/' ? '' : pathWithoutLocale;
     const newPath = `/${newLocale}${cleanPath}`;
     
-    // Use window.location for reliable navigation
-    window.location.href = newPath;
+    // Use Next.js router for smooth navigation
+    router.push(newPath);
   };
 
   return (
     <div className="relative">
       {/* Mobile: only current flag, dropdown with other flags */}
       <div className="relative md:hidden flex items-center">
-        <FlagButton
-          locale={locale}
-          isActive={true}
+        <div
+          className="flex items-center space-x-2 cursor-pointer"
           onClick={() => setIsOpen((prev) => !prev)}
-          label={localeNames[locale]}
-        />
+        >
+          <FlagButton
+            locale={locale}
+            isActive={true}
+            onClick={() => setIsOpen((prev) => !prev)}
+            label={localeNames[locale]}
+          />
+          <span className="text-sm text-white/80 font-medium">
+            {localeNames[locale]}
+          </span>
+        </div>
 
         {isOpen && (
           <div
@@ -66,36 +75,59 @@ export default function LanguageSwitcher() {
               .map((loc) => (
                 <div
                   key={loc}
-                  className="flex items-center justify-between w-full min-w-[72px]"
+                  className="flex items-center justify-between w-full min-w-[120px] cursor-pointer hover:bg-white/10 rounded px-2 py-1 transition-colors"
+                  onClick={() => {
+                    setIsOpen(false);
+                    switchLocale(loc);
+                  }}
                 >
                   <span className="text-xs text-white/80 uppercase">
                     {getLocaleCode(loc)}
                   </span>
-                  <FlagButton
-                    locale={loc}
-                    isActive={false}
-                    onClick={() => {
-                      setIsOpen(false);
-                      switchLocale(loc);
-                    }}
-                    label={localeNames[loc]}
-                  />
+                  <div className="flex items-center space-x-2">
+                    <span className="text-sm text-white/80 font-medium">
+                      {localeNames[loc]}
+                    </span>
+                    <FlagButton
+                      locale={loc}
+                      isActive={false}
+                      onClick={() => {
+                        setIsOpen(false);
+                        switchLocale(loc);
+                      }}
+                      label={localeNames[loc]}
+                    />
+                  </div>
                 </div>
               ))}
           </div>
         )}
       </div>
 
-      {/* Desktop: show all flags */}
-      <div className="hidden md:flex items-center space-x-2">
+      {/* Desktop: show all flags with text */}
+      <div className="hidden md:flex items-center space-x-3">
         {locales.map((loc) => (
-          <FlagButton
+          <div
             key={loc}
-            locale={loc}
-            isActive={locale === loc}
+            className={`flex items-center space-x-2 px-2 py-1 rounded-lg transition-all duration-200 cursor-pointer ${
+              locale === loc 
+                ? 'bg-luxury-gold/20 border border-luxury-gold/50' 
+                : 'hover:bg-white/10'
+            }`}
             onClick={() => switchLocale(loc)}
-            label={localeNames[loc]}
-          />
+          >
+            <FlagButton
+              locale={loc}
+              isActive={locale === loc}
+              onClick={() => switchLocale(loc)}
+              label={localeNames[loc]}
+            />
+            <span className={`text-sm font-medium ${
+              locale === loc ? 'text-luxury-gold' : 'text-white/80'
+            }`}>
+              {localeNames[loc]}
+            </span>
+          </div>
         ))}
       </div>
     </div>

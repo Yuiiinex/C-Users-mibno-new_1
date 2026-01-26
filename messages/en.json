@@ -22,6 +22,15 @@
     "brand": {
       "title": "A Legend in Motion",
       "description": "For decades, we've pushed the boundaries of automotive innovation, creating vehicles that transcend mere functionality to become works of art on wheels."
+    },
+    "business": {
+      "title": "WEXPRESSCARS — Trusted in Luxury Transport Since 2009",
+      "description": "At WEXPRESSCARS, we specialize in premium vehicle logistics powered by smart IT systems, ensuring high-value cars are transported safely and efficiently throughout France and the EU. With years of experience and cutting-edge tracking technology, we bring reliability and precision to every delivery.",
+      "stats": {
+        "reliability": "Reliability",
+        "service": "Service"
+      },
+      "cta": "Learn More About Our Services"
     }
   },
   "models": {
@@ -58,10 +67,15 @@
     "subtitle": "We're here to answer your questions",
     "form": {
       "name": "Name",
+      "namePlaceholder": "John Doe",
       "email": "Email",
+      "emailPlaceholder": "john@example.com",
       "phone": "Phone",
+      "phonePlaceholder": "+1 (555) 123-4567",
       "message": "Message",
+      "messagePlaceholder": "Tell us about your vehicle transport needs...",
       "submit": "Send",
+      "whatsapp": "WhatsApp",
       "sending": "Sending...",
       "success": "Message sent successfully",
       "error": "An error occurred"

@@ -19,6 +19,15 @@
     "brand": {
       "title": "Eine Legende in Bewegung",
       "description": "Seit Jahrzehnten erweitern wir die Grenzen der Automobilinnovation und schaffen Fahrzeuge, die über bloße Funktionalität hinausgehen und zu Kunstwerken auf Rädern werden."
+    },
+    "business": {
+      "title": "WEXPRESSCARS — Seit 2009 vertrauenswürdig im Luxus-Transport",
+      "description": "Bei WEXPRESSCARS sind wir auf Premium-Fahrzeuglogistik spezialisiert, unterstützt durch intelligente IT-Systeme. So stellen wir sicher, dass hochwertige Fahrzeuge sicher und effizient in Frankreich und der EU transportiert werden. Mit jahrelanger Erfahrung und modernster Tracking-Technologie bringen wir Zuverlässigkeit und Präzision in jede Lieferung.",
+      "stats": {
+        "reliability": "Zuverlässigkeit",
+        "service": "Service"
+      },
+      "cta": "Mehr über unsere Dienstleistungen"
     }
   },
   "models": {
@@ -55,10 +64,15 @@
     "subtitle": "Wir sind hier, um Ihre Fragen zu beantworten",
     "form": {
       "name": "Name",
+      "namePlaceholder": "Max Mustermann",
       "email": "E-Mail",
+      "emailPlaceholder": "max@example.com",
       "phone": "Telefon",
+      "phonePlaceholder": "+49 151 23456789",
       "message": "Nachricht",
+      "messagePlaceholder": "Beschreiben Sie Ihre Anforderungen an den Fahrzeugtransport...",
       "submit": "Senden",
+      "whatsapp": "WhatsApp",
       "sending": "Wird gesendet...",
       "success": "Nachricht erfolgreich gesendet",
       "error": "Ein Fehler ist aufgetreten"
