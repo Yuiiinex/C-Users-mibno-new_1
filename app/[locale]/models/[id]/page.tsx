@@ -14,12 +14,12 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   
   if (!car) {
     return {
-      title: 'Modèle non trouvé - AutoLuxe',
+      title: 'Modèle non trouvé - WEXPRESSCARS',
     };
   }
 
   return {
-    title: `${car.name} ${car.model} - AutoLuxe`,
+    title: `${car.name} ${car.model} - WEXPRESSCARS`,
     description: car.description,
     openGraph: {
       title: `${car.name} ${car.model}`,

@@ -1,4 +1,4 @@
-# AutoLuxe - High-End Automotive Brand Website
+# WEXPRESSCARS - High-End Automotive Brand Website
 
 A luxury automotive brand website inspired by premium automotive design, built with Next.js 14, React, TypeScript, and Tailwind CSS.
 

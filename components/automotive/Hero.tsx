@@ -12,13 +12,46 @@ export default function Hero() {
       {/* Background Image/Video Placeholder */}
       <div className="absolute inset-0 z-0">
         <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat bg-fixed"
           style={{
             backgroundImage: 'url(https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=1920&h=1080&fit=crop)',
           }}
         />
         <div className="absolute inset-0 bg-luxury-darker/70" />
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-luxury-darker/50 to-luxury-darker" />
+      </div>
+
+      {/* Fixed social links on the right side */}
+      <div className="hidden md:flex fixed right-6 top-1/2 -translate-y-1/2 z-20 flex-col space-y-4">
+        {/* Facebook */}
+        <a
+          href="https://facebook.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="w-12 h-12 rounded-md flex items-center justify-center text-white bg-[#1877F2] hover:bg-[#145dbf] shadow-lg shadow-black/40 transition-colors duration-300"
+        >
+          <span className="text-xl font-semibold">f</span>
+        </a>
+
+        {/* Instagram */}
+        <a
+          href="https://instagram.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="w-12 h-12 rounded-md flex items-center justify-center text-white bg-gradient-to-tr from-[#f58529] via-[#dd2a7b] to-[#8134af] hover:opacity-90 shadow-lg shadow-black/40 transition-all duration-300"
+        >
+          <span className="text-xl font-semibold">IG</span>
+        </a>
+
+        {/* X / Twitter */}
+        <a
+          href="https://x.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="w-12 h-12 rounded-md flex items-center justify-center text-white bg-black hover:bg-neutral-900 border border-white/60 hover:border-luxury-gold/80 shadow-lg shadow-black/40 transition-colors duration-300"
+        >
+          <span className="text-xl font-semibold">X</span>
+        </a>
       </div>
 
       {/* Content */}

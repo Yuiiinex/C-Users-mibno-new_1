@@ -172,7 +172,7 @@ export default function ContactPage() {
                   <h3 className="text-luxury-gold font-semibold mb-2 uppercase tracking-wider text-sm">
                     {t('info.email')}
                   </h3>
-                  <p className="text-white/80">contact@autoluxe.ma</p>
+                  <p className="text-white/80">contact@WEXPRESSCARS.ma</p>
                 </div>
 
                 <div>

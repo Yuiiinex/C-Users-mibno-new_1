@@ -36,11 +36,10 @@ export default function Navbar() {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
-          ? 'bg-luxury-darker/95 backdrop-blur-md shadow-lg'
-          : 'bg-transparent'
-      }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
+        ? 'bg-gradient-to-b from-black/80 to-transparent backdrop-blur-md shadow-lg'
+        : 'bg-gradient-to-b from-black/30 to-transparent backdrop-blur-sm'
+        }`}
     >
       <div className="w-full px-8 relative">
         <div className="flex items-center justify-between h-20">
@@ -68,17 +67,34 @@ export default function Navbar() {
                 )}
               </svg>
             </button>
-            
+
             {/* Logo */}
-            <Link href="/" className="flex items-center mr-8">
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                className="text-2xl font-bold text-white tracking-tight"
-              >
-                <span className="text-luxury-gold">AUTO</span>
-                <span className="text-white">LUXE</span>
-              </motion.div>
-            </Link>
+          
+<Link href="/" className="mr-8">
+  <motion.div
+    whileHover={{ scale: 1.08 }}
+    transition={{ type: "spring", stiffness: 250, damping: 18 }}
+    className="
+      flex items-center
+      px-4 py-2
+      rounded-xl
+      bg-black/50
+      border border-white/10
+      overflow-hidden
+    "
+  >
+    <motion.img
+      src="/images/logo.jpg"
+      alt="WExpressCars Logo"
+      className="h-16 w-32 object-cover rounded-lg"
+      whileHover={{ scale: 1.05 }}
+      transition={{ type: "spring", stiffness: 300, damping: 20 }}
+    />
+  </motion.div>
+</Link>
+
+
+
 
             {/* Desktop Navigation */}
             <div className={`hidden md:flex items-center ${isRTL ? 'space-x-0 space-x-reverse' : 'space-x-8'} ${isRTL ? 'mr-8' : 'ml-8'}`}>
@@ -91,11 +107,13 @@ export default function Navbar() {
                 >
                   <Link
                     href={item.href}
-                    className={`px-4 py-2 text-white hover:text-luxury-gold transition-colors duration-200 font-medium text-base uppercase tracking-wider ${
-                      isRTL ? 'ml-4' : 'mr-4'
-                    }`}
+                    className={`relative px-4 py-2 text-white hover:text-luxury-gold transition-colors duration-200 font-medium text-lg md:text-lg uppercase tracking-wider group ${isRTL ? 'ml-6' : 'mr-6'
+                      }`}
                   >
-                    {item.label}
+                    <span className="relative">
+                      {item.label}
+                      <span className="absolute left-0 -bottom-1 w-0 h-[1px] bg-luxury-gold transition-all duration-300 group-hover:w-full"></span>
+                    </span>
                   </Link>
                 </motion.div>
               ))}
@@ -108,23 +126,31 @@ export default function Navbar() {
           </div>
         </div>
 
-          {/* Mobile Menu */}
-          {isMobileMenuOpen && (
-            <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: 'auto' }}
-              exit={{ opacity: 0, height: 0 }}
-              className={`md:hidden pb-4 border-t border-white/10 mt-4 ${isRTL ? 'pr-4' : 'pl-4'}`}
-            >
+        {/* Horizontal line below navbar */}
+        <div className="w-full px-8 absolute bottom-0 left-0">
+          <div className="h-[0.5px] bg-white/20 w-full"></div>
+        </div>
+
+        {/* Mobile Menu */}
+        {isMobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            className={`md:hidden pb-4 border-t border-white/10 mt-4 ${isRTL ? 'pr-4' : 'pl-4'}`}
+          >
             <div className="flex flex-col space-y-4 pt-4">
               {navItems.map((item) => (
                 <Link
                   key={item.href}
                   href={item.href}
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="block py-3 text-white/90 hover:text-luxury-gold transition-colors duration-200 font-medium text-base uppercase tracking-wider"
+                  className="relative block py-3 text-white/90 hover:text-luxury-gold transition-colors duration-200 font-medium text-lg md:text-base uppercase tracking-wider group"
                 >
-                  {item.label}
+                  <span className="relative">
+                    {item.label}
+                    <span className="absolute left-0 -bottom-1 w-0 h-0.5 bg-luxury-gold transition-all duration-300 group-hover:w-full"></span>
+                  </span>
                 </Link>
               ))}
             </div>

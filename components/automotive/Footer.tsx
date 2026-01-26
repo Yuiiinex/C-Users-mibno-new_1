@@ -113,7 +113,7 @@ export default function Footer() {
 
         <div className="mt-8 pt-8 border-t border-white/10">
           <p className="text-white/40 text-sm text-center">
-            © {new Date().getFullYear()} AutoLuxe. {t('rights')}.
+            © {new Date().getFullYear()} WEXPRESSCARS. {t('rights')}.
           </p>
         </div>
       </div>

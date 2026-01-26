@@ -11,9 +11,9 @@ import './globals.css';
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 
 export const metadata: Metadata = {
-  title: 'AutoLuxe - Excellence Automobile',
+  title: 'WEXPRESSCARS - Excellence Automobile',
   description: 'Découvrez l\'art de la performance automobile',
-  metadataBase: new URL('https://autoluxe.ma'),
+  metadataBase: new URL('https://WEXPRESSCARS.ma'),
 };
 
 export function generateStaticParams() {

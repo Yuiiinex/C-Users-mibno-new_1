@@ -5,10 +5,10 @@ export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations('brand');
 
   return {
-    title: 'Marque - AutoLuxe',
+    title: 'Marque - WEXPRESSCARS',
     description: t('subtitle'),
     openGraph: {
-      title: 'Marque - AutoLuxe',
+      title: 'Marque - WEXPRESSCARS',
       description: t('subtitle'),
       type: 'website',
     },

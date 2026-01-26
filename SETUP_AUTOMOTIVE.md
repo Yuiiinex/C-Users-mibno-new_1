@@ -1,4 +1,4 @@
-# AutoLuxe Website - Setup Complete ✅
+# WEXPRESSCARS Website - Setup Complete ✅
 
 ## What Has Been Built
 
