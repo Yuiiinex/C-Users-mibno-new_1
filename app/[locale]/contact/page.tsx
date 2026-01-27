@@ -48,8 +48,19 @@ export default function ContactPage() {
       </section>
 
       {/* Contact Section */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-luxury-darker">
-        <div className="max-w-7xl mx-auto">
+      <section className="py-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0 z-0">
+          <img 
+            src="/images/pagecontact.jpg" 
+            alt="Contact Background"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/70"></div>
+        </div>
+        
+        {/* Content */}
+        <div className="max-w-7xl mx-auto relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Contact Form */}
             <motion.div
@@ -60,7 +71,7 @@ export default function ContactPage() {
               <h2 className="text-3xl font-bold text-white mb-8">Envoyez-nous un message</h2>
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
-                  <label htmlFor="name" className="block text-white/70 text-sm font-medium mb-2">
+                  <label htmlFor="name" className="block text-white/90 text-sm font-medium mb-2">
                     {t('form.name')}
                   </label>
                   <input
@@ -70,13 +81,13 @@ export default function ContactPage() {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-white/40 focus:outline-none focus:border-luxury-gold transition-colors"
+                    className="w-full px-4 py-3 bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg text-white placeholder-white/50 focus:outline-none focus:border-luxury-gold transition-colors"
                     placeholder={t('form.name')}
                   />
                 </div>
 
                 <div>
-                  <label htmlFor="email" className="block text-white/70 text-sm font-medium mb-2">
+                  <label htmlFor="email" className="block text-white/90 text-sm font-medium mb-2">
                     {t('form.email')}
                   </label>
                   <input
@@ -86,13 +97,13 @@ export default function ContactPage() {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-white/40 focus:outline-none focus:border-luxury-gold transition-colors"
+                    className="w-full px-4 py-3 bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg text-white placeholder-white/50 focus:outline-none focus:border-luxury-gold transition-colors"
                     placeholder={t('form.email')}
                   />
                 </div>
 
                 <div>
-                  <label htmlFor="phone" className="block text-white/70 text-sm font-medium mb-2">
+                  <label htmlFor="phone" className="block text-white/90 text-sm font-medium mb-2">
                     {t('form.phone')}
                   </label>
                   <input
@@ -101,13 +112,13 @@ export default function ContactPage() {
                     name="phone"
                     value={formData.phone}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-white/40 focus:outline-none focus:border-luxury-gold transition-colors"
+                    className="w-full px-4 py-3 bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg text-white placeholder-white/50 focus:outline-none focus:border-luxury-gold transition-colors"
                     placeholder={t('form.phone')}
                   />
                 </div>
 
                 <div>
-                  <label htmlFor="message" className="block text-white/70 text-sm font-medium mb-2">
+                  <label htmlFor="message" className="block text-white/90 text-sm font-medium mb-2">
                     {t('form.message')}
                   </label>
                   <textarea
@@ -117,7 +128,7 @@ export default function ContactPage() {
                     onChange={handleChange}
                     required
                     rows={6}
-                    className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-white/40 focus:outline-none focus:border-luxury-gold transition-colors resize-none"
+                    className="w-full px-4 py-3 bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg text-white placeholder-white/50 focus:outline-none focus:border-luxury-gold transition-colors resize-none"
                     placeholder={t('form.message')}
                   />
                 </div>
@@ -154,7 +165,7 @@ export default function ContactPage() {
                   <h3 className="text-luxury-gold font-semibold mb-2 uppercase tracking-wider text-sm">
                     {t('info.address')}
                   </h3>
-                  <p className="text-white/80">
+                  <p className="text-white/90">
                     123 Avenue de l'Excellence<br />
                     Casablanca 20000<br />
                     Maroc
@@ -165,21 +176,21 @@ export default function ContactPage() {
                   <h3 className="text-luxury-gold font-semibold mb-2 uppercase tracking-wider text-sm">
                     {t('info.phone')}
                   </h3>
-                  <p className="text-white/80">+212 522 123 456</p>
+                  <p className="text-white/90">+212 522 123 456</p>
                 </div>
 
                 <div>
                   <h3 className="text-luxury-gold font-semibold mb-2 uppercase tracking-wider text-sm">
                     {t('info.email')}
                   </h3>
-                  <p className="text-white/80">contact@WEXPRESSCARS.ma</p>
+                  <p className="text-white/90">contact@WEXPRESSCARS.ma</p>
                 </div>
 
                 <div>
                   <h3 className="text-luxury-gold font-semibold mb-2 uppercase tracking-wider text-sm">
                     {t('info.hours')}
                   </h3>
-                  <p className="text-white/80">
+                  <p className="text-white/90">
                     Lundi - Vendredi: 9h00 - 18h00<br />
                     Samedi: 10h00 - 16h00<br />
                     Dimanche: Fermé
