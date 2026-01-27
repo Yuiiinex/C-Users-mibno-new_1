@@ -46,26 +46,26 @@ export default function Footer() {
   return (
     <footer className="bg-luxury-darker border-t border-white/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
           {/* Brand */}
-          <div className="col-span-1 md:col-span-2">
+          <div className="col-span-1 md:col-span-2 flex flex-col items-center justify-center text-center">
             <Link href="/" className="flex items-center space-x-2 mb-4">
               <span className="text-2xl font-bold">
                 <span className="text-luxury-gold">AUTO</span>
                 <span className="text-white">LUXE</span>
               </span>
             </Link>
-            <p className="text-white/60 text-sm max-w-md">
+            <p className="text-white/60 text-sm max-w-md mx-auto">
               L'excellence automobile depuis des décennies. Chaque véhicule incarne notre passion pour la performance et le design.
             </p>
           </div>
 
           {/* Quick Links */}
-          <div>
-            <h3 className="text-white font-semibold mb-4 uppercase tracking-wider text-sm">
+          <div className="flex flex-col items-center">
+            <h3 className="text-white font-semibold mb-4 uppercase tracking-wider text-sm text-center">
               Navigation
             </h3>
-            <ul className="space-y-2">
+            <ul className="space-y-2 text-center">
               <li>
                 <Link href="/" className="text-white/60 hover:text-luxury-gold transition-colors text-sm">
                   Accueil
@@ -90,11 +90,11 @@ export default function Footer() {
           </div>
 
           {/* Social */}
-          <div>
-            <h3 className="text-white font-semibold mb-4 uppercase tracking-wider text-sm">
+          <div className="flex flex-col items-center">
+            <h3 className="text-white font-semibold mb-4 uppercase tracking-wider text-sm text-center">
               {t('follow')}
             </h3>
-            <div className="flex space-x-4">
+            <div className="flex space-x-4 justify-center">
               {socialLinks.map((social) => (
                 <a
                   key={social.name}
@@ -111,8 +111,8 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-8 pt-8 border-t border-white/10">
-          <p className="text-white/40 text-sm text-center">
+        <div className="mt-8 pt-8 border-t border-white/10 text-center">
+          <p className="text-white/40 text-sm">
             © {new Date().getFullYear()} WEXPRESSCARS. {t('rights')}.
           </p>
         </div>

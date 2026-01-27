@@ -1,27 +1,64 @@
-import { getTranslations } from 'next-intl/server';
+'use client';
+
+import { useState, useEffect } from 'react';
+import { useTranslations } from 'next-intl';
 import Hero from '@/components/automotive/Hero';
 import CarCard from '@/components/automotive/CarCard';
 import BrandBar from '@/components/automotive/BrandBar';
 import { cars } from '@/lib/cars';
-import { Metadata } from 'next';
 
-export async function generateMetadata(): Promise<Metadata> {
-  const t = await getTranslations('home');
+// Carousel Component
+function ImageCarousel() {
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const totalSlides = 6;
 
-  return {
-    title: 'WEXPRESSCARS - Excellence Automobile',
-    description: t('brand.description'),
-    openGraph: {
-      title: 'WEXPRESSCARS - Excellence Automobile',
-      description: t('brand.description'),
-      type: 'website',
-    },
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % totalSlides);
+    }, 5000); // Change slide every 5 seconds
+
+    return () => clearInterval(interval);
+  }, []);
+
+  const goToSlide = (index: number) => {
+    setCurrentSlide(index);
   };
+
+  const navigateCarousel = (direction: 'prev' | 'next') => {
+    if (direction === 'next') {
+      setCurrentSlide((prev) => (prev + 1) % totalSlides);
+    } else {
+      setCurrentSlide((prev) => (prev - 1 + totalSlides) % totalSlides);
+    }
+  };
+
+  return (
+    <section className="relative h-[46.875vh] w-full overflow-hidden bg-luxury-darker">
+      <div className="relative h-full w-full">
+        {/* Images */}
+        <div className="absolute inset-0">
+          {['c1', 'c2', 'c3', 'c4', 'c5', 'c6'].map((imageName, index) => (
+            <img
+              key={index}
+              src={`/images/${imageName}.jpg`}
+              alt={`Luxury Transport ${index + 1}`}
+              className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
+                index === currentSlide ? 'opacity-100' : 'opacity-0'
+              }`}
+            />
+          ))}
+        </div>
+
+        {/* Overlay for better text visibility */}
+        <div className="absolute inset-0 bg-black/40" />
+      </div>
+    </section>
+  );
 }
 
-export default async function HomePage() {
-  const t = await getTranslations('home');
-  const tContact = await getTranslations('contact');
+export default function HomePage() {
+  const t = useTranslations('home');
+  const tContact = useTranslations('contact');
 
   return (
     <>
@@ -47,7 +84,7 @@ export default async function HomePage() {
         </div>
       </section>
 
-            <BrandBar />
+      <BrandBar />
 
       {/* Business Description Section */}
       <section className="py-24 px-4 sm:px-6 lg:px-8 bg-luxury-darker min-h-screen">
@@ -66,9 +103,9 @@ export default async function HomePage() {
             {/* Business Text */}
             <div className="space-y-6">
               <h2 className="text-3xl font-bold text-white mb-4">
-                {t('business.title') || 'WEXPRESSCARS — Trusted in Luxury Transport Since 2009'}
+                <span className="text-luxury-gold">WEX</span>PRESSCARS Trusted in Luxury Transport Since 2009
               </h2>
-              <p className="text-lg text-white/80 leading-relaxed">
+              <p className="text-lg text-white/80 leading-relaxed text-justify">
                 {t('business.description') || 'At WEXPRESSCARS, we specialize in premium vehicle logistics powered by smart IT systems, ensuring high-value cars are transported safely and efficiently throughout France and the EU. With years of experience and cutting-edge tracking technology, we bring reliability and precision to every delivery.'}
               </p>
               
@@ -82,17 +119,24 @@ export default async function HomePage() {
                   <div className="text-white/70">{t('business.stats.service') || 'Service'}</div>
                 </div>
               </div>
-
-              <button className="mt-8 px-8 py-3 bg-luxury-gold text-black font-semibold rounded-lg hover:bg-luxury-gold/90 transition-colors">
-                {t('business.cta') || 'Learn More About Our Services'}
-              </button>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="py-24 px-4 sm:px-6 lg:px-8 bg-luxury-darker/95">
-        <div className="max-w-4xl mx-auto">
+      {/* Contact Form Section */}
+      <section className="py-24 px-4 sm:px-6 lg:px-8 bg-luxury-darker/95 relative overflow-hidden">
+        {/* Background Image with Gradient Overlay */}
+        <div className="absolute inset-0 z-0">
+          <img 
+            src="/images/contact.jpg" 
+            alt="Contact Background"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-luxury-darker/70 via-luxury-darker/60 to-luxury-darker/70"></div>
+        </div>
+        
+        <div className="max-w-4xl mx-auto relative z-10">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
               {tContact('title')}
@@ -197,6 +241,9 @@ export default async function HomePage() {
           </p>
         </div>
       </section>
+
+      {/* Full Screen Image Carousel */}
+      <ImageCarousel />
     </>
   );
 }

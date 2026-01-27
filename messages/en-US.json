@@ -1,7 +1,7 @@
 {
   "nav": {
     "home": "Home",
-    "models": "Models",
+    "models": "Transported Vehicles",
     "brand": "Brand",
     "experience": "Experience",
     "contact": "Contact"
@@ -17,11 +17,11 @@
     },
     "featured": {
       "title": "Exceptional Models",
-      "subtitle": "Where engineering meets elegance"
+      "subtitle": "Prestige Transported"
     },
     "brand": {
-      "title": "A Legend in Motion",
-      "description": "For decades, we've pushed the boundaries of automotive innovation, creating vehicles that transcend mere functionality to become works of art on wheels."
+      "title": "Excellence in Luxury Transport",
+      "description": "For years, we have been pushing the boundaries of luxury vehicle transport, ensuring every move with care and security so that every car arrives intact and ready to impress."
     },
     "business": {
       "title": "WEXPRESSCARS — Trusted in Luxury Transport Since 2009",
@@ -45,20 +45,50 @@
     "viewDetails": "View Details"
   },
   "brand": {
-    "title": "Our Heritage",
-    "subtitle": "A passion for excellence",
-    "sections": {
-      "heritage": {
-        "title": "Heritage",
-        "description": "Our history is woven with victories, innovations, and an unwavering quest for perfection."
+    "title": "Algema Blitzlader 2",
+    "subtitle": "Professional Excellence in Luxury Vehicle Transport",
+    "algema": {
+      "title": "Algema Blitzlader 2",
+      "subtitle": "The pinnacle of professional luxury vehicle transport, engineered for the secure and elegant movement of high-value automobiles throughout France and the European Union. Our flagship transport vehicle combines cutting-edge technology with uncompromising safety standards to deliver unparalleled service for premium automotive logistics.",
+      "exteriorCaption": "Sleek exterior design optimized for aerodynamic efficiency and premium appearance",
+      "interiorCaption": "State-of-the-art interior with advanced climate control and security systems",
+      "operationCaption": "Precision loading mechanism ensuring gentle handling of luxury vehicles",
+      "exteriorAlt": "Algema Blitzlader 2 exterior view",
+      "interiorAlt": "Algema Blitzlader 2 interior cabin",
+      "operationAlt": "Algema Blitzlader 2 loading operation",
+      "descriptionTitle": "Engineering Excellence for Premium Transport",
+      "description1": "The Algema Blitzlader 2 represents the culmination of decades of expertise in luxury vehicle logistics. Engineered specifically for high-end automotive transport, this sophisticated vehicle features advanced hydraulic systems, precision loading mechanisms, and state-of-the-art climate control to ensure your valuable vehicles arrive in pristine condition.",
+      "description2": "Safety is paramount in every aspect of the Blitzlader 2's design. From reinforced structural elements to multi-point securing systems, every detail has been meticulously crafted to protect vehicles worth millions. The enclosed transport compartment provides complete protection from weather, road debris, and potential security threats while maintaining optimal environmental conditions.",
+      "description3": "Operating seamlessly across France and throughout the European Union, the Blitzlader 2 combines exceptional maneuverability with impressive capacity. Its advanced GPS tracking system and real-time monitoring capabilities provide complete visibility during transport, while our experienced drivers ensure professional handling from pickup to delivery.",
+      "whyChooseTitle": "Why the Algema Blitzlader 2 for High-End Transport",
+      "safety": {
+        "title": "Uncompromising Safety",
+        "description": "Advanced multi-point securing systems, reinforced structure, and real-time monitoring ensure maximum protection for luxury vehicles"
       },
-      "innovation": {
-        "title": "Innovation",
-        "description": "We constantly push the boundaries of automotive technology to create the future."
+      "enclosed": {
+        "title": "Fully Enclosed Transport",
+        "description": "Climate-controlled, sealed compartment protects vehicles from weather, debris, and unauthorized access during transit"
       },
-      "craftsmanship": {
-        "title": "Craftsmanship",
-        "description": "Each vehicle is the result of meticulous craftsmanship and unparalleled attention to detail."
+      "logistics": {
+        "title": "EU-Wide Logistics",
+        "description": "Seamless cross-border transport throughout France and the European Union with comprehensive tracking and documentation"
+      },
+      "specifications": {
+        "title": "Technical Specifications",
+        "technical": {
+          "title": "Vehicle Specifications",
+          "capacity": "Capacity: Up to 2 luxury vehicles",
+          "length": "Total Length: 8.5 meters",
+          "height": "Height: 3.8 meters",
+          "weight": "Gross Vehicle Weight: 12 tons"
+        },
+        "features": {
+          "title": "Premium Features",
+          "climate": "Advanced climate control system (15-25°C)",
+          "security": "GPS tracking with real-time monitoring",
+          "tracking": "24/7 satellite surveillance system",
+          "insurance": "Fully insured for vehicles up to $5 million"
+        }
       }
     }
   },

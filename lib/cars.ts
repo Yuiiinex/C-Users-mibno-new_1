@@ -4,6 +4,7 @@ export interface Car {
   model: string;
   description: string;
   image: string;
+  hoverImage?: string;
   video?: string;
   specs: {
     power: string;
@@ -21,6 +22,8 @@ export const cars: Car[] = [
     model: '2024',
     description: 'Performance pure et design intemporel. Une symphonie de puissance et d\'élégance.',
     image: 'https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=1200&h=800&fit=crop',
+    hoverImage: 'https://images.unsplash.com/photo-1542362567-b07e54358753?w=1200&h=800&fit=crop',
+    video: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',
     specs: {
       power: '650 CV',
       topSpeed: '320 km/h',
@@ -35,6 +38,8 @@ export const cars: Car[] = [
     model: '2024',
     description: 'L\'agilité d\'une sportive avec le confort d\'une berline de luxe.',
     image: 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=1200&h=800&fit=crop',
+    hoverImage: 'https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=1200&h=800&fit=crop',
+    video: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4',
     specs: {
       power: '720 CV',
       topSpeed: '340 km/h',
@@ -49,6 +54,8 @@ export const cars: Car[] = [
     model: '2024',
     description: 'Conçue pour la piste, perfectionnée pour la route. L\'essence même de la performance.',
     image: 'https://images.unsplash.com/photo-1549317661-bd32c8b0e2f1?w=1200&h=800&fit=crop',
+    hoverImage: 'https://images.unsplash.com/photo-1583121274602-3e2820c6f88f?w=1200&h=800&fit=crop',
+    video: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4',
     specs: {
       power: '850 CV',
       topSpeed: '380 km/h',
@@ -63,6 +70,8 @@ export const cars: Car[] = [
     model: '2024',
     description: 'Opulence et performance réunies. Le summum du raffinement automobile.',
     image: 'https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=1200&h=800&fit=crop',
+    hoverImage: 'https://images.unsplash.com/photo-1606664515524-edf22d0b3c95?w=1200&h=800&fit=crop',
+    video: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4',
     specs: {
       power: '600 CV',
       topSpeed: '300 km/h',

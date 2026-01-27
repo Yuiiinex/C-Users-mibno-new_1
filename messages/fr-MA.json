@@ -1,7 +1,7 @@
 {
   "nav": {
     "home": "Accueil",
-    "models": "Modèles",
+    "models": "Véhicules Transportés",
     "brand": "Marque",
     "experience": "Expérience",
     "contact": "Contact"
@@ -16,12 +16,12 @@
       "cta": "Voir notre flotte"
     },
     "featured": {
-      "title": "Modèles d'Exception",
-      "subtitle": "L'ingénierie rencontre l'élégance"
+      "title": "Modèles Exceptionnels",
+      "subtitle": "Transport Prestige"
     },
     "brand": {
-      "title": "Une Légende en Mouvement",
-      "description": "Depuis des décennies, nous repoussons les limites de l'innovation automobile, créant des véhicules qui transcendent la simple fonctionnalité pour devenir des œuvres d'art sur roues."
+      "title": "Excellence en Transport de Luxe",
+      "description": "Depuis des années, nous repoussons les limites du transport de véhicules de luxe, assurant chaque déplacement avec soin et sécurité pour que chaque voiture arrive intacte et prête à impressionner."
     },
     "business": {
       "title": "WEXPRESSCARS — Fiable dans le transport de luxe depuis 2009",
@@ -45,20 +45,50 @@
     "viewDetails": "Voir les détails"
   },
   "brand": {
-    "title": "Notre Héritage",
-    "subtitle": "Une passion pour l'excellence",
-    "sections": {
-      "heritage": {
-        "title": "Héritage",
-        "description": "Notre histoire est tissée de victoires, d'innovations et d'une quête inébranlable de la perfection."
+    "title": "Une Légende en Mouvement",
+    "subtitle": "Depuis des décennies, nous repoussons les limites de l'innovation automobile, créant des véhicules qui transcendent la simple fonctionnalité pour devenir des œuvres d'art sur roues.",
+    "algema": {
+      "title": "Algema Blitzlader 2",
+      "subtitle": "Le summum du transport professionnel de véhicules de luxe, conçu pour le mouvement sécurisé et élégant d'automobiles de grande valeur à travers la France et l'Union Européenne. Notre véhicule de transport phare allie technologie de pointe et normes de sécurité intransigeantes pour offrir un service sans égal pour la logistique automobile premium.",
+      "exteriorCaption": "Design extérieur élégant optimisé pour l'efficacité aérodynamique et l'apparence premium",
+      "interiorCaption": "Intérieur de pointe avec systèmes avancés de contrôle climatique et de sécurité",
+      "operationCaption": "Mécanisme de chargement de précision assurant une manipulation douce des véhicules de luxe",
+      "exteriorAlt": "Vue extérieure de l'Algema Blitzlader 2",
+      "interiorAlt": "Cabine intérieure de l'Algema Blitzlader 2",
+      "operationAlt": "Opération de chargement de l'Algema Blitzlader 2",
+      "descriptionTitle": "Excellence Ingénierie pour Transport Premium",
+      "description1": "L'Algema Blitzlader 2 représente l'aboutissement de décennies d'expertise en logistique de véhicules de luxe. Conçu spécifiquement pour le transport automobile haut de gamme, ce véhicule sophistiqué présente des systèmes hydrauliques avancés, des mécanismes de chargement de précision et un contrôle climatique de pointe pour garantir que vos véhicules précieux arrivent en état impeccable.",
+      "description2": "La sécurité est primordiale dans chaque aspect de la conception du Blitzlader 2. Des éléments structurels renforcés aux systèmes de fixation multipoints, chaque détail a été méticuleusement conçu pour protéger des véhicules valant des millions. Le compartiment de transport fermé offre une protection complète contre les intempéries, les débris routiers et les menaces de sécurité potentielles tout en maintenant des conditions environnementales optimales.",
+      "description3": "Opérant sans faille à travers la France et l'Union Européenne, le Blitzlader 2 allie maniabilité exceptionnelle et capacité impressionnante. Son système de suivi GPS avancé et ses capacités de surveillance en temps réel offrent une visibilité complète pendant le transport, tandis que nos chauffeurs expérimentés assurent une manipulation professionnelle de la prise en charge à la livraison.",
+      "whyChooseTitle": "Pourquoi l'Algema Blitzlader 2 pour Transport Haut de Gamme",
+      "safety": {
+        "title": "Sécurité Intransigeante",
+        "description": "Systèmes de fixation multipoints avancés, structure renforcée et surveillance en temps réel garantissent une protection maximale pour les véhicules de luxe"
       },
-      "innovation": {
-        "title": "Innovation",
-        "description": "Nous repoussons constamment les limites de la technologie automobile pour créer l'avenir."
+      "enclosed": {
+        "title": "Transport Totalement Fermé",
+        "description": "Compartiment scellé à contrôle climatique protège les véhicules des intempéries, débris et accès non autorisé pendant le transit"
       },
-      "craftsmanship": {
-        "title": "Savoir-faire",
-        "description": "Chaque véhicule est le résultat d'un savoir-faire artisanal méticuleux et d'une attention aux détails inégalée."
+      "logistics": {
+        "title": "Logistique à l'Échelle de l'UE",
+        "description": "Transport transfrontalier sans faille à travers la France et l'Union Européenne avec suivi complet et documentation"
+      },
+      "specifications": {
+        "title": "Spécifications Techniques",
+        "technical": {
+          "title": "Spécifications du Véhicule",
+          "capacity": "Capacité : Jusqu'à 2 véhicules de luxe",
+          "length": "Longueur Totale : 8.5 mètres",
+          "height": "Hauteur : 3.8 mètres",
+          "weight": "Poids Total Roulant : 12 tonnes"
+        },
+        "features": {
+          "title": "Fonctionnalités Premium",
+          "climate": "Système avancé de contrôle climatique (15-25°C)",
+          "security": "Suivi GPS avec surveillance en temps réel",
+          "tracking": "Système de surveillance satellite 24/7",
+          "insurance": "Entièrement assuré pour véhicules jusqu'à 5 millions d'euros"
+        }
       }
     }
   },
