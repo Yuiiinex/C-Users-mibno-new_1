@@ -43,7 +43,6 @@ export default function ProductDetailsClient({ product }: ProductDetailsClientPr
       image: product.images[0] || '',
       size: selectedSize || undefined,
       color: selectedColor || undefined,
-      quantity: 0,
     })
 
     alert('Product added to cart!')
