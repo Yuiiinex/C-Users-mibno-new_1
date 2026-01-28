@@ -13,9 +13,7 @@ const nextConfig = {
       },
     ],
   },
-  env: {
-    _next_intl_trailing_slash: 'never',
-  },
+  trailingSlash: false,
 };
 
 module.exports = withNextIntl(nextConfig);
