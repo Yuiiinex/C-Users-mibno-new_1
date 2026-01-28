@@ -21,8 +21,8 @@ export const cars: Car[] = [
     name: 'GT Elite',
     model: '2024',
     description: 'Performance pure et design intemporel. Une symphonie de puissance et d\'élégance.',
-    image: '/images/v1.jpg',
-    hoverImage: '/images/v2.jpg',
+    image: '/images/image_hero.jpg',
+    hoverImage: '/images/description.jpg',
     video: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',
     specs: {
       power: '650 CV',
@@ -37,8 +37,8 @@ export const cars: Car[] = [
     name: 'Sport Pro',
     model: '2024',
     description: 'L\'agilité d\'une sportive avec le confort d\'une berline de luxe.',
-    image: '/images/v2.jpg',
-    hoverImage: '/images/v3.jpg',
+    image: '/images/description.jpg',
+    hoverImage: '/images/IMG-20260125-WA0007.jpg',
     video: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4',
     specs: {
       power: '720 CV',
@@ -53,8 +53,8 @@ export const cars: Car[] = [
     name: 'Racing Edition',
     model: '2024',
     description: 'Conçue pour la piste, perfectionnée pour la route. L\'essence même de la performance.',
-    image: '/images/v3.jpg',
-    hoverImage: '/images/Brand1.png',
+    image: '/images/IMG-20260125-WA0007.jpg',
+    hoverImage: '/images/v1.jpg',
     video: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4',
     specs: {
       power: '850 CV',
@@ -69,8 +69,8 @@ export const cars: Car[] = [
     name: 'Luxury Grand',
     model: '2024',
     description: 'Opulence et performance réunies. Le summum du raffinement automobile.',
-    image: '/images/Brand2.png',
-    hoverImage: '/images/Brand3.png',
+    image: '/images/v1.jpg',
+    hoverImage: '/images/v2.jpg',
     video: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4',
     specs: {
       power: '600 CV',
@@ -84,7 +84,7 @@ export const cars: Car[] = [
     name: 'Coupe Sport',
     model: '2024',
     description: 'Élégance aérodynamique et puissance brute. Une déclaration de style.',
-    image: '/images/Brand4.png',
+    image: '/images/v2.jpg',
     specs: {
       power: '680 CV',
       topSpeed: '330 km/h',
@@ -97,7 +97,7 @@ export const cars: Car[] = [
     name: 'Hyper GT',
     model: '2024',
     description: 'L\'avenir de la performance. Technologie de pointe et design révolutionnaire.',
-    image: '/images/Brand5.png',
+    image: '/images/v3.jpg',
     video: 'https://www.w3schools.com/html/mov_bbb.mp4',
     specs: {
       power: '950 CV',
@@ -111,7 +111,7 @@ export const cars: Car[] = [
     name: 'Electric Storm',
     model: '2024',
     description: 'Puissance électrique silencieuse avec accélération instantanée.',
-    image: '/images/Brand6.png',
+    image: '/images/c1.jpg',
     video: 'https://www.w3schools.com/html/mov_bbb.mp4',
     specs: {
       power: '800 CV',
@@ -125,7 +125,7 @@ export const cars: Car[] = [
     name: 'Classic Heritage',
     model: '2024',
     description: 'Design intemporel rencontre performance moderne.',
-    image: '/images/Brand7.png',
+    image: '/images/c2.jpg',
     video: 'https://www.w3schools.com/html/mov_bbb.mp4',
     specs: {
       power: '550 CV',
