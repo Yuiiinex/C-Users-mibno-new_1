@@ -86,7 +86,7 @@ export default function Navbar() {
     <motion.img
       src="/images/logo1.png"
       alt="WExpressCars Logo"
-      className="h-13 w-20 object-contain"
+      className="h-12 w-20 object-contain"
       whileHover={{ scale: 1.05 }}
       transition={{ type: "spring", stiffness: 300, damping: 20 }}
     />
