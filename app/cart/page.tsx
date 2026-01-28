@@ -4,6 +4,9 @@ import { useCart } from '@/context/CartContext'
 import Image from 'next/image'
 import Link from 'next/link'
 
+// Force dynamic rendering
+export const dynamic = 'force-dynamic'
+
 export default function CartPage() {
   const { items, removeItem, updateQuantity, total } = useCart()
 

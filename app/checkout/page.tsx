@@ -1,8 +1,11 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useCart } from '@/context/CartContext'
 import { useRouter } from 'next/navigation'
+
+// Force dynamic rendering
+export const dynamic = 'force-dynamic'
 
 export default function CheckoutPage() {
   const { items, total, clearCart } = useCart()
@@ -17,6 +20,13 @@ export default function CheckoutPage() {
     zipCode: '',
     country: '',
   })
+
+  // Handle empty cart redirect
+  useEffect(() => {
+    if (items.length === 0 && typeof window !== 'undefined') {
+      router.push('/cart')
+    }
+  }, [items.length, router])
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -52,9 +62,14 @@ export default function CheckoutPage() {
     }
   }
 
+  // Show loading state while redirecting
   if (items.length === 0) {
-    router.push('/cart')
-    return null
+    return (
+      <div className="container mx-auto px-4 py-8 text-center">
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-luxury-gold mx-auto mb-4"></div>
+        <p>Redirecting to cart...</p>
+      </div>
+    )
   }
 
   return (

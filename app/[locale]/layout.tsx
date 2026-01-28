@@ -6,6 +6,7 @@ import Navbar from '@/components/automotive/Navbar';
 import Footer from '@/components/automotive/Footer';
 import { Inter } from 'next/font/google';
 import { Metadata } from 'next';
+import Providers from '../providers';
 import './globals.css';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
@@ -41,11 +42,13 @@ export default async function LocaleLayout({
   return (
     <html lang={locale} dir={isRTL ? 'rtl' : 'ltr'} className={inter.variable}>
       <body className="bg-luxury-darker text-white antialiased">
-        <NextIntlClientProvider messages={messages}>
-          <Navbar />
-          <main className="min-h-screen">{children}</main>
-          <Footer />
-        </NextIntlClientProvider>
+        <Providers>
+          <NextIntlClientProvider messages={messages}>
+            <Navbar />
+            <main className="min-h-screen">{children}</main>
+            <Footer />
+          </NextIntlClientProvider>
+        </Providers>
       </body>
     </html>
   );
