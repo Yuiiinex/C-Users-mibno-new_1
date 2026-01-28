@@ -102,14 +102,26 @@ export default function BrandBar() {
           <div className="flex space-x-4 px-8">
             {/* First set */}
             <div ref={firstSetRef} className="flex space-x-4">
-              {[...Array(11)].map((_, i) => (
+              {[
+                'image_hero.jpg',
+                'description.jpg', 
+                'IMG-20260125-WA0007.jpg',
+                'v1.jpg',
+                'v2.jpg',
+                'v3.jpg',
+                'c1.jpg',
+                'c2.jpg',
+                'c3.jpg',
+                'c4.jpg',
+                'c5.jpg'
+              ].map((imageName, i) => (
                 <div
                   key={i}
                   className="w-24 h-24 rounded overflow-hidden flex-shrink-0 hover:opacity-80 transition-opacity"
                   onClick={(e) => handleLogoClick(i + 1, e)}
                 >
                   <img
-                    src={`/images/brand${i + 1}.png`}
+                    src={`/images/${imageName}`}
                     alt={`Brand ${i + 1}`}
                     className="w-full h-full object-cover"
                   />
@@ -119,14 +131,26 @@ export default function BrandBar() {
 
             {/* Duplicate set */}
             <div className="flex space-x-4">
-              {[...Array(11)].map((_, i) => (
+              {[
+                'image_hero.jpg',
+                'description.jpg', 
+                'IMG-20260125-WA0007.jpg',
+                'v1.jpg',
+                'v2.jpg',
+                'v3.jpg',
+                'c1.jpg',
+                'c2.jpg',
+                'c3.jpg',
+                'c4.jpg',
+                'c5.jpg'
+              ].map((imageName, i) => (
                 <div
                   key={i + 11}
                   className="w-24 h-24 rounded overflow-hidden flex-shrink-0 hover:opacity-80 transition-opacity"
                   onClick={(e) => handleLogoClick(i + 1, e)}
                 >
                   <img
-                    src={`/images/brand${i + 1}.png`}
+                    src={`/images/${imageName}`}
                     alt={`Brand ${i + 1}`}
                     className="w-full h-full object-cover"
                   />
