@@ -5,7 +5,6 @@ import Link from 'next/link';
 import { useTranslations, useLocale } from 'next-intl';
 import { motion } from 'framer-motion';
 import LanguageSwitcher from './LanguageSwitcher';
-import { AnimatedUnderline } from '@/components/ui/animated-underline';
 import { locales, localeNames, localeFlags, type Locale } from '@/i18n';
 
 export default function Navbar() {
@@ -108,12 +107,13 @@ export default function Navbar() {
                 >
                   <Link
                     href={item.href}
-                    className={`relative px-4 py-2 text-white hover:text-luxury-gold transition-colors duration-200 font-medium text-lg md:text-lg uppercase tracking-wider ${isRTL ? 'ml-6' : 'mr-6'
+                    className={`relative px-4 py-2 text-white hover:text-luxury-gold transition-colors duration-200 font-medium text-lg md:text-lg uppercase tracking-wider group ${isRTL ? 'ml-6' : 'mr-6'
                       }`}
                   >
-                    <AnimatedUnderline>
-                      <span>{item.label}</span>
-                    </AnimatedUnderline>
+                    <span className="relative">
+                      {item.label}
+                      <span className="absolute left-0 -bottom-1 w-0 h-[1px] bg-luxury-gold transition-all duration-300 group-hover:w-full"></span>
+                    </span>
                   </Link>
                 </motion.div>
               ))}
@@ -145,11 +145,12 @@ export default function Navbar() {
                   key={item.href}
                   href={item.href}
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="relative block py-3 text-white/90 hover:text-luxury-gold transition-colors duration-200 font-medium text-lg md:text-base uppercase tracking-wider"
+                  className="relative block py-3 text-white/90 hover:text-luxury-gold transition-colors duration-200 font-medium text-lg md:text-base uppercase tracking-wider group"
                 >
-                  <AnimatedUnderline>
-                    <span>{item.label}</span>
-                  </AnimatedUnderline>
+                  <span className="relative">
+                    {item.label}
+                    <span className="absolute left-0 -bottom-1 w-0 h-0.5 bg-luxury-gold transition-all duration-300 group-hover:w-full"></span>
+                  </span>
                 </Link>
               ))}
             </div>

@@ -6,6 +6,7 @@ import Hero from '@/components/automotive/Hero';
 import CarCard from '@/components/automotive/CarCard';
 import BrandBar from '@/components/automotive/BrandBar';
 import { cars } from '@/lib/cars';
+import { LuxurySection, LuxuryCard, RevealText } from '@/components/ui/luxury-section';
 
 // Carousel Component
 function ImageCarousel() {
@@ -65,24 +66,32 @@ export default function HomePage() {
       <Hero />
       
       {/* All Cars Section */}
-      <section className="py-24 px-4 sm:px-6 lg:px-8 bg-luxury-darker">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-              {t('featured.title')}
-            </h2>
-            <p className="text-xl text-white/70 max-w-2xl mx-auto">
-              {t('featured.subtitle')}
-            </p>
-          </div>
+      <LuxurySection index={1} background="luxury">
+        <section className="py-24 px-4 sm:px-6 lg:px-8">
+          <div className="max-w-7xl mx-auto">
+            <RevealText delay={0.2}>
+              <div className="text-center mb-16">
+                <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+                  {t('featured.title')}
+                </h2>
+                <p className="text-xl text-white/70 max-w-2xl mx-auto">
+                  {t('featured.subtitle')}
+                </p>
+              </div>
+            </RevealText>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3">
-            {cars.map((car, index) => (
-              <CarCard key={car.id} car={car} index={index} />
-            ))}
+            <RevealText delay={0.4}>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3">
+                {cars.map((car, index) => (
+                  <LuxuryCard key={car.id} hover={true}>
+                    <CarCard car={car} index={index} />
+                  </LuxuryCard>
+                ))}
+              </div>
+            </RevealText>
           </div>
-        </div>
-      </section>
+        </section>
+      </LuxurySection>
 
       <BrandBar />
 
