@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { useTranslations, useLocale } from 'next-intl';
 import { motion } from 'framer-motion';
 import LanguageSwitcher from './LanguageSwitcher';
+import { InteractiveHoverButton } from '@/components/ui/interactive-hover-button';
 import { locales, localeNames, localeFlags, type Locale } from '@/i18n';
 
 export default function Navbar() {
@@ -120,8 +121,9 @@ export default function Navbar() {
             </div>
           </div>
 
-          {/* Right Side: Language Switcher */}
-          <div className="flex items-center">
+          {/* Right Side: Language Switcher and Button */}
+          <div className="flex items-center space-x-4">
+            <InteractiveHoverButton text="Sign Up" />
             <LanguageSwitcher />
           </div>
         </div>
