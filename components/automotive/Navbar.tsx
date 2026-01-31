@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { useTranslations, useLocale } from 'next-intl';
 import { motion } from 'framer-motion';
 import LanguageSwitcher from './LanguageSwitcher';
-import { InteractiveHoverButton } from '@/components/ui/interactive-hover-button';
+import { AnimatedUnderline } from '@/components/ui/animated-underline';
 import { locales, localeNames, localeFlags, type Locale } from '@/i18n';
 
 export default function Navbar() {
@@ -108,22 +108,20 @@ export default function Navbar() {
                 >
                   <Link
                     href={item.href}
-                    className={`relative px-4 py-2 text-white hover:text-luxury-gold transition-colors duration-200 font-medium text-lg md:text-lg uppercase tracking-wider group ${isRTL ? 'ml-6' : 'mr-6'
+                    className={`relative px-4 py-2 text-white hover:text-luxury-gold transition-colors duration-200 font-medium text-lg md:text-lg uppercase tracking-wider ${isRTL ? 'ml-6' : 'mr-6'
                       }`}
                   >
-                    <span className="relative">
-                      {item.label}
-                      <span className="absolute left-0 -bottom-1 w-0 h-[1px] bg-luxury-gold transition-all duration-300 group-hover:w-full"></span>
-                    </span>
+                    <AnimatedUnderline>
+                      <span>{item.label}</span>
+                    </AnimatedUnderline>
                   </Link>
                 </motion.div>
               ))}
             </div>
           </div>
 
-          {/* Right Side: Language Switcher and Button */}
-          <div className="flex items-center space-x-4">
-            <InteractiveHoverButton text="Sign Up" />
+          {/* Right Side: Language Switcher */}
+          <div className="flex items-center">
             <LanguageSwitcher />
           </div>
         </div>
@@ -147,12 +145,11 @@ export default function Navbar() {
                   key={item.href}
                   href={item.href}
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="relative block py-3 text-white/90 hover:text-luxury-gold transition-colors duration-200 font-medium text-lg md:text-base uppercase tracking-wider group"
+                  className="relative block py-3 text-white/90 hover:text-luxury-gold transition-colors duration-200 font-medium text-lg md:text-base uppercase tracking-wider"
                 >
-                  <span className="relative">
-                    {item.label}
-                    <span className="absolute left-0 -bottom-1 w-0 h-0.5 bg-luxury-gold transition-all duration-300 group-hover:w-full"></span>
-                  </span>
+                  <AnimatedUnderline>
+                    <span>{item.label}</span>
+                  </AnimatedUnderline>
                 </Link>
               ))}
             </div>

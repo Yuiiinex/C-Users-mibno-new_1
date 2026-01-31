@@ -1,11 +1,13 @@
-import { InteractiveHoverButton } from "@/components/ui/interactive-hover-button";
+import { AnimatedUnderline } from "@/components/ui/animated-underline"
 
-function InteractiveHoverButtonDemo() {
-  return (
-    <div className="flex justify-center items-center p-8">
-      <InteractiveHoverButton text="Sign Up" />
-    </div>
-  );
+const Demo = () => {
+    return (
+        <>
+            <AnimatedUnderline>
+                <span className="text-white">Hover me</span>
+            </AnimatedUnderline>
+        </>
+    )
 }
 
-export { InteractiveHoverButtonDemo };
+export {Demo}
