@@ -68,6 +68,34 @@ const videos: Video[] = [
     description: 'Exclusive VIP vehicle transport',
     src: '/videos/vip-transport.mp4',
     thumbnail: '/images/c8.jpg'
+  },
+  {
+    id: '9',
+    title: 'Classic Transport',
+    description: 'Classic vehicle transport services',
+    src: '/videos/classic-transport.mp4',
+    thumbnail: '/images/c9.jpg'
+  },
+  {
+    id: '10',
+    title: 'Modern Transport',
+    description: 'Modern vehicle transport solutions',
+    src: '/videos/modern-transport.mp4',
+    thumbnail: '/images/c10.jpg'
+  },
+  {
+    id: '11',
+    title: 'Elite Transport',
+    description: 'Elite vehicle transport services',
+    src: '/videos/elite-transport.mp4',
+    thumbnail: '/images/c11.jpg'
+  },
+  {
+    id: '12',
+    title: 'First-Class Transport',
+    description: 'First-class vehicle transport',
+    src: '/videos/first-class-transport.mp4',
+    thumbnail: '/images/c12.jpg'
   }
 ];
 
