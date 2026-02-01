@@ -442,7 +442,7 @@ export default function FlyingVideoShowcase() {
           return (
             <motion.div
               key={i}
-              className="absolute w-32 h-40 bg-gradient-to-br from-white/5 to-transparent rounded-lg shadow-2xl"
+              className="absolute w-24 h-32 bg-gradient-to-br from-white/5 to-transparent rounded-lg shadow-2xl"
               style={{
                 left: `${pos.left}%`,
                 top: `${pos.top}%`
