@@ -476,17 +476,17 @@ export default function FlyingVideoShowcase() {
       </div>
       
       {/* Main Content */}
-      <div className="relative z-10 w-full py-12">
+      <div className="relative z-10 w-full py-12 pt-24">
         {/* Flying Video Grid */}
-        <div className="w-full px-4 sm:px-6 lg:px-8 flex justify-center">
+        <div className="w-full px-4 sm:px-6 lg:px-8">
           {/* Flying Video Playlist - Full Width Grid */}
           <motion.div
             initial={{ opacity: 0, x: 3000, rotateY: -180 }}
             animate={{ opacity: 1, x: 0, rotateY: 0 }}
             transition={{ duration: 2, type: "spring", stiffness: 40, delay: 0.5 }}
-            className="w-full max-w-7xl"
+            className="w-full"
           >
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full justify-items-center">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 w-full">
               {videos.map((video, index) => (
                 <FlyingVideoCard
                   key={video.id}
