@@ -473,34 +473,7 @@ export default function FlyingVideoShowcase() {
       
       {/* Main Content */}
       <div className="relative z-10 w-full py-12">
-        {/* Flying Title */}
-        <motion.div
-          initial={{ opacity: 0, y: -200, rotateX: 90 }}
-          animate={{ opacity: 1, y: 0, rotateX: 0 }}
-          transition={{ duration: 1.5, type: "spring", stiffness: 50 }}
-          className="text-center mb-8 px-4"
-        >
-          <motion.h2 
-            className="text-3xl md:text-5xl font-bold mb-4"
-            animate={{
-              rotateZ: [0, 1, -1, 0],
-            }}
-            transition={{
-              duration: 4,
-              repeat: Infinity,
-              ease: "easeInOut"
-            }}
-          >
-            <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
-              {t('featured.title')}
-            </span>
-          </motion.h2>
-          <p className="text-lg text-gray-300 max-w-2xl mx-auto">
-            {t('featured.subtitle')}
-          </p>
-        </motion.div>
-
-        {/* Flying Video Grid - No Main Video */}
+        {/* Flying Video Grid - No Title */}
         <div className="w-full px-4 sm:px-6 lg:px-8">
           {/* Flying Video Playlist - Full Width Grid */}
           <motion.div
