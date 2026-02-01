@@ -1,8 +1,8 @@
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
-import { motion, AnimatePresence, useInView, useScroll, useTransform } from 'framer-motion';
-import { Play, Pause, Volume2, VolumeX, Maximize2 } from 'lucide-react';
+import { motion, AnimatePresence, useInView, useScroll, useTransform, useSpring, MotionValue } from 'framer-motion';
+import { Play, Pause, Volume2, VolumeX, Maximize2, RotateCw, Zap } from 'lucide-react';
 
 interface Video {
   id: string;
@@ -43,11 +43,184 @@ const videos: Video[] = [
   }
 ];
 
+// 3D Card Component
+const VideoCard3D = ({ video, index, isActive, onClick, isHovered }: {
+  video: Video;
+  index: number;
+  isActive: boolean;
+  onClick: () => void;
+  isHovered: boolean;
+}) => {
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width - 0.5;
+    const y = (e.clientY - rect.top) / rect.height - 0.5;
+    setMousePosition({ x, y });
+  };
+
+  const handleMouseLeave = () => {
+    setMousePosition({ x: 0, y: 0 });
+  };
+
+  return (
+    <motion.div
+      className="relative"
+      initial={{ opacity: 0, rotateY: -180, z: -100 }}
+      animate={{ 
+        opacity: 1, 
+        rotateY: 0, 
+        z: isActive ? 50 : 0,
+        scale: isActive ? 1.05 : 1
+      }}
+      transition={{ 
+        duration: 0.8, 
+        delay: index * 0.1,
+        type: "spring",
+        stiffness: 100,
+        damping: 20
+      }}
+      whileHover={{ 
+        scale: 1.08,
+        rotateY: 5,
+        z: 30
+      }}
+      style={{
+        transformStyle: 'preserve-3d',
+        perspective: 1000,
+      }}
+    >
+      <motion.div
+        className="relative rounded-2xl overflow-hidden cursor-pointer shadow-2xl"
+        onClick={onClick}
+        onMouseMove={handleMouseMove}
+        onMouseLeave={handleMouseLeave}
+        animate={{
+          rotateX: mousePosition.y * 15,
+          rotateY: mousePosition.x * 15,
+          translateZ: isHovered ? 30 : 0
+        }}
+        transition={{
+          type: "spring",
+          stiffness: 300,
+          damping: 30
+        }}
+        style={{
+          transformStyle: 'preserve-3d',
+        }}
+      >
+        {/* Main Video Thumbnail */}
+        <div className="relative aspect-video">
+          <img
+            src={video.thumbnail}
+            alt={video.title}
+            className="w-full h-full object-cover"
+          />
+          
+          {/* 3D Gradient Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
+          
+          {/* 3D Glass Effect */}
+          <motion.div
+            className="absolute inset-0 bg-gradient-to-br from-blue-500/20 via-purple-500/20 to-pink-500/20"
+            animate={{
+              opacity: isHovered ? 0.3 : 0.1
+            }}
+            style={{
+              backdropFilter: 'blur(10px)',
+              transform: 'translateZ(20px)'
+            }}
+          />
+          
+          {/* Floating Play Button */}
+          <motion.div
+            className="absolute inset-0 flex items-center justify-center"
+            initial={{ scale: 0, rotate: -180 }}
+            animate={{ 
+              scale: isHovered ? 1 : 0.8,
+              rotate: 0
+            }}
+            transition={{
+              type: "spring",
+              stiffness: 200,
+              damping: 15
+            }}
+          >
+            <div className="w-16 h-16 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center border-2 border-white/40">
+              <Play size={24} className="text-white ml-1" />
+            </div>
+          </motion.div>
+          
+          {/* Video Info */}
+          <div className="absolute bottom-0 left-0 right-0 p-4 transform-gpu">
+            <motion.h4
+              className="text-white font-bold text-lg mb-1"
+              animate={{
+                translateZ: isActive ? 30 : 10
+              }}
+            >
+              {video.title}
+            </motion.h4>
+            <motion.p
+              className="text-gray-300 text-sm"
+              animate={{
+                translateZ: isActive ? 20 : 5
+              }}
+            >
+              {video.description}
+            </motion.p>
+          </div>
+          
+          {/* Active Indicator */}
+          {isActive && (
+            <motion.div
+              className="absolute top-4 right-4"
+              initial={{ scale: 0, rotate: -180 }}
+              animate={{ scale: 1, rotate: 360 }}
+              transition={{
+                duration: 0.5,
+                repeat: Infinity,
+                repeatType: "reverse"
+              }}
+            >
+              <div className="w-4 h-4 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full shadow-lg shadow-blue-500/50" />
+            </motion.div>
+          )}
+          
+          {/* 3D Border Glow */}
+          {isActive && (
+            <motion.div
+              className="absolute inset-0 rounded-2xl"
+              style={{
+                background: 'linear-gradient(45deg, #3b82f6, #8b5cf6, #ec4899, #3b82f6)',
+                backgroundSize: '400% 400%',
+                filter: 'blur(2px)',
+                transform: 'translateZ(-10px)'
+              }}
+              animate={{
+                backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
+                opacity: [0.5, 1, 0.5]
+              }}
+              transition={{
+                duration: 3,
+                repeat: Infinity,
+                ease: "linear"
+              }}
+            />
+          )}
+        </div>
+      </motion.div>
+    </motion.div>
+  );
+};
+
 export default function VideoShowcase() {
   const [currentVideo, setCurrentVideo] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(true);
   const [isFullscreen, setIsFullscreen] = useState(false);
+  const [hoveredVideo, setHoveredVideo] = useState<number | null>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   
@@ -56,14 +229,16 @@ export default function VideoShowcase() {
     offset: ["start end", "end start"]
   });
 
-  const y = useTransform(scrollYProgress, [0, 1], [0, -50]);
+  const y = useTransform(scrollYProgress, [0, 1], [0, -100]);
+  const rotateX = useTransform(scrollYProgress, [0, 1], [0, 15]);
+  const rotateY = useTransform(scrollYProgress, [0, 1], [0, -10]);
+  const scale = useTransform(scrollYProgress, [0, 0.5, 1], [0.8, 1, 1.2]);
   const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
 
   const isInView = useInView(containerRef, { once: false, margin: "-100px" });
 
   useEffect(() => {
     if (isInView && !isPlaying) {
-      // Auto-play when in view
       handlePlay();
     }
   }, [isInView]);
@@ -117,42 +292,151 @@ export default function VideoShowcase() {
   return (
     <motion.div 
       ref={containerRef}
-      style={{ y, opacity }}
+      style={{ 
+        y, 
+        rotateX, 
+        rotateY, 
+        scale, 
+        opacity,
+        transformStyle: 'preserve-3d',
+        perspective: 2000
+      }}
       className="relative min-h-screen bg-gradient-to-br from-black via-gray-900 to-black overflow-hidden"
     >
-      {/* Background Effects */}
-      <div className="absolute inset-0 bg-gradient-to-r from-blue-900/20 via-purple-900/20 to-pink-900/20" />
-      <div className="absolute inset-0 bg-black/40" />
+      {/* 3D Background Layers */}
+      <div className="absolute inset-0">
+        {/* Layer 1: Farthest */}
+        <motion.div
+          className="absolute inset-0 bg-gradient-to-r from-blue-900/30 via-purple-900/30 to-pink-900/30"
+          animate={{
+            rotate: [0, 360],
+          }}
+          transition={{
+            duration: 60,
+            repeat: Infinity,
+            ease: "linear"
+          }}
+          style={{
+            transform: 'translateZ(-200px) scale(1.2)'
+          }}
+        />
+        
+        {/* Layer 2: Middle */}
+        <motion.div
+          className="absolute inset-0 bg-gradient-to-br from-cyan-900/20 via-indigo-900/20 to-violet-900/20"
+          animate={{
+            rotate: [360, 0],
+          }}
+          transition={{
+            duration: 45,
+            repeat: Infinity,
+            ease: "linear"
+          }}
+          style={{
+            transform: 'translateZ(-100px) scale(1.1)'
+          }}
+        />
+        
+        {/* Layer 3: Closest */}
+        <div 
+          className="absolute inset-0 bg-black/40" 
+          style={{
+            transform: 'translateZ(-50px)'
+          }}
+        />
+      </div>
+      
+      {/* Floating 3D Elements */}
+      <div className="absolute inset-0 pointer-events-none">
+        {[...Array(15)].map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute w-2 h-2 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+            }}
+            animate={{
+              y: [0, -150, 0],
+              x: [0, Math.random() * 100 - 50, 0],
+              z: [0, 100, 0],
+              rotateX: [0, 360, 0],
+              rotateY: [0, 360, 0],
+              opacity: [0, 1, 0],
+              scale: [0, 1.5, 0],
+            }}
+            transition={{
+              duration: 15 + Math.random() * 25,
+              repeat: Infinity,
+              delay: Math.random() * 10,
+              ease: "easeInOut"
+            }}
+          />
+        ))}
+      </div>
       
       {/* Main Content */}
       <div className="relative z-10 container mx-auto px-4 py-16">
-        {/* Title */}
+        {/* 3D Title */}
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          initial={{ opacity: 0, y: 100, rotateX: -45, z: -200 }}
+          animate={{ opacity: 1, y: 0, rotateX: 0, z: 0 }}
+          transition={{ duration: 1, type: "spring", stiffness: 100 }}
           className="text-center mb-16"
+          style={{
+            transformStyle: 'preserve-3d'
+          }}
         >
-          <h2 className="text-4xl md:text-6xl font-bold text-white mb-4">
+          <motion.h2 
+            className="text-5xl md:text-7xl font-bold mb-4"
+            style={{
+              transform: 'translateZ(50px)'
+            }}
+          >
             <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
-              Video Showcase
+              3D Video Showcase
             </span>
-          </h2>
-          <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-            Experience our premium vehicle transport services through stunning visuals
-          </p>
+          </motion.h2>
+          <motion.p 
+            className="text-xl text-gray-300 max-w-2xl mx-auto"
+            style={{
+              transform: 'translateZ(30px)'
+            }}
+          >
+            Experience our premium services with mind-blowing 3D effects
+          </motion.p>
         </motion.div>
 
-        {/* Main Video Player */}
+        {/* 3D Video Grid */}
         <div className="grid lg:grid-cols-3 gap-8 items-start">
-          {/* Main Video */}
+          {/* Main 3D Video Player */}
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            initial={{ opacity: 0, x: -100, rotateY: -45, z: -150 }}
+            animate={{ opacity: 1, x: 0, rotateY: 0, z: 0 }}
+            transition={{ duration: 1, type: "spring", stiffness: 80 }}
             className="lg:col-span-2"
+            style={{
+              transformStyle: 'preserve-3d'
+            }}
           >
-            <div className="relative rounded-2xl overflow-hidden shadow-2xl bg-black">
+            <motion.div
+              className="relative rounded-3xl overflow-hidden shadow-2xl bg-black"
+              whileHover={{
+                rotateY: 5,
+                rotateX: -5,
+                scale: 1.02,
+                z: 50
+              }}
+              transition={{
+                type: "spring",
+                stiffness: 300,
+                damping: 30
+              }}
+              style={{
+                transformStyle: 'preserve-3d',
+                perspective: 1000
+              }}
+            >
               <div className="relative aspect-video">
                 <video
                   ref={videoRef}
@@ -162,13 +446,22 @@ export default function VideoShowcase() {
                   onEnded={nextVideo}
                   muted={isMuted}
                   playsInline
+                  style={{
+                    transform: 'translateZ(20px)'
+                  }}
                 >
                   <source src={videos[currentVideo].src} type="video/mp4" />
                   Your browser does not support the video tag.
                 </video>
                 
-                {/* Video Overlay Controls */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300">
+                {/* 3D Video Overlay */}
+                <motion.div
+                  className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300"
+                  style={{
+                    transform: 'translateZ(30px)',
+                    backdropFilter: 'blur(10px)'
+                  }}
+                >
                   <div className="absolute bottom-0 left-0 right-0 p-6">
                     <div className="flex items-center justify-between">
                       <div>
@@ -180,125 +473,142 @@ export default function VideoShowcase() {
                         </p>
                       </div>
                       <div className="flex gap-3">
-                        <button
+                        <motion.button
                           onClick={isPlaying ? handlePause : handlePlay}
-                          className="p-3 bg-white/20 backdrop-blur-sm rounded-full text-white hover:bg-white/30 transition-colors"
+                          className="p-3 bg-white/20 backdrop-blur-sm rounded-full text-white hover:bg-white/30 transition-all duration-300 hover:scale-110"
+                          whileHover={{ rotate: 360, scale: 1.2 }}
+                          whileTap={{ scale: 0.9 }}
+                          transition={{ duration: 0.5 }}
                         >
                           {isPlaying ? <Pause size={20} /> : <Play size={20} />}
-                        </button>
-                        <button
+                        </motion.button>
+                        <motion.button
                           onClick={toggleMute}
-                          className="p-3 bg-white/20 backdrop-blur-sm rounded-full text-white hover:bg-white/30 transition-colors"
+                          className="p-3 bg-white/20 backdrop-blur-sm rounded-full text-white hover:bg-white/30 transition-all duration-300 hover:scale-110"
+                          whileHover={{ rotate: 180, scale: 1.2 }}
+                          whileTap={{ scale: 0.9 }}
+                          transition={{ duration: 0.3 }}
                         >
                           {isMuted ? <VolumeX size={20} /> : <Volume2 size={20} />}
-                        </button>
-                        <button
+                        </motion.button>
+                        <motion.button
                           onClick={toggleFullscreen}
-                          className="p-3 bg-white/20 backdrop-blur-sm rounded-full text-white hover:bg-white/30 transition-colors"
+                          className="p-3 bg-white/20 backdrop-blur-sm rounded-full text-white hover:bg-white/30 transition-all duration-300 hover:scale-110"
+                          whileHover={{ rotate: 45, scale: 1.2 }}
+                          whileTap={{ scale: 0.9 }}
+                          transition={{ duration: 0.3 }}
                         >
                           <Maximize2 size={20} />
-                        </button>
+                        </motion.button>
                       </div>
                     </div>
                   </div>
-                </div>
+                </motion.div>
+                
+                {/* 3D Border Glow */}
+                <motion.div
+                  className="absolute inset-0 rounded-3xl pointer-events-none"
+                  style={{
+                    background: 'linear-gradient(45deg, #3b82f6, #8b5cf6, #ec4899, #06b6d4, #3b82f6)',
+                    backgroundSize: '400% 400%',
+                    filter: 'blur(3px)',
+                    transform: 'translateZ(-10px)'
+                  }}
+                  animate={{
+                    backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
+                    opacity: [0.3, 0.8, 0.3]
+                  }}
+                  transition={{
+                    duration: 4,
+                    repeat: Infinity,
+                    ease: "linear"
+                  }}
+                />
               </div>
-            </div>
+            </motion.div>
           </motion.div>
 
-          {/* Video Playlist */}
+          {/* 3D Video Playlist */}
           <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="space-y-4"
+            initial={{ opacity: 0, x: 100, rotateY: 45, z: -150 }}
+            animate={{ opacity: 1, x: 0, rotateY: 0, z: 0 }}
+            transition={{ duration: 1, type: "spring", stiffness: 80, delay: 0.2 }}
+            className="space-y-6"
+            style={{
+              transformStyle: 'preserve-3d'
+            }}
           >
-            <h3 className="text-2xl font-bold text-white mb-6">Video Playlist</h3>
+            <motion.h3 
+              className="text-3xl font-bold text-white mb-6"
+              initial={{ rotateY: -90 }}
+              animate={{ rotateY: 0 }}
+              transition={{ duration: 0.8, type: "spring" }}
+              style={{
+                transform: 'translateZ(40px)'
+              }}
+            >
+              Video Playlist
+            </motion.h3>
+            
             {videos.map((video, index) => (
-              <motion.div
+              <VideoCard3D
                 key={video.id}
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
+                video={video}
+                index={index}
+                isActive={currentVideo === index}
                 onClick={() => handleVideoSelect(index)}
-                className={`relative rounded-xl overflow-hidden cursor-pointer transition-all duration-300 ${
-                  currentVideo === index 
-                    ? 'ring-4 ring-blue-500 shadow-2xl scale-105' 
-                    : 'shadow-lg hover:shadow-xl'
-                }`}
-              >
-                <div className="relative aspect-video">
-                  <img
-                    src={video.thumbnail}
-                    alt={video.title}
-                    className="w-full h-full object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
-                  <div className="absolute bottom-0 left-0 right-0 p-4">
-                    <h4 className="text-white font-semibold text-sm mb-1">
-                      {video.title}
-                    </h4>
-                    <p className="text-gray-300 text-xs line-clamp-2">
-                      {video.description}
-                    </p>
-                  </div>
-                  {currentVideo === index && (
-                    <motion.div
-                      initial={{ scale: 0 }}
-                      animate={{ scale: 1 }}
-                      className="absolute top-2 right-2 w-3 h-3 bg-blue-500 rounded-full"
-                    />
-                  )}
-                </div>
-              </motion.div>
+                isHovered={hoveredVideo === index}
+              />
             ))}
           </motion.div>
         </div>
 
-        {/* Navigation Arrows */}
-        <div className="flex justify-center mt-8 gap-4">
-          <button
+        {/* 3D Navigation Controls */}
+        <motion.div
+          className="flex justify-center mt-12 gap-6"
+          initial={{ opacity: 0, y: 50, z: -100 }}
+          animate={{ opacity: 1, y: 0, z: 0 }}
+          transition={{ duration: 0.8, delay: 0.5 }}
+          style={{
+            transformStyle: 'preserve-3d'
+          }}
+        >
+          <motion.button
             onClick={prevVideo}
-            className="p-4 bg-white/10 backdrop-blur-sm rounded-full text-white hover:bg-white/20 transition-all duration-300 hover:scale-110"
+            className="p-4 bg-gradient-to-r from-blue-500/20 to-purple-500/20 backdrop-blur-sm rounded-full text-white hover:from-blue-500/30 hover:to-purple-500/30 transition-all duration-300 border border-white/20"
+            whileHover={{ 
+              scale: 1.2, 
+              rotateY: 180,
+              z: 20
+            }}
+            whileTap={{ scale: 0.9 }}
+            style={{
+              transform: 'translateZ(10px)'
+            }}
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
             </svg>
-          </button>
-          <button
+          </motion.button>
+          
+          <motion.button
             onClick={nextVideo}
-            className="p-4 bg-white/10 backdrop-blur-sm rounded-full text-white hover:bg-white/20 transition-all duration-300 hover:scale-110"
+            className="p-4 bg-gradient-to-r from-purple-500/20 to-pink-500/20 backdrop-blur-sm rounded-full text-white hover:from-purple-500/30 hover:to-pink-500/30 transition-all duration-300 border border-white/20"
+            whileHover={{ 
+              scale: 1.2, 
+              rotateY: 180,
+              z: 20
+            }}
+            whileTap={{ scale: 0.9 }}
+            style={{
+              transform: 'translateZ(10px)'
+            }}
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
             </svg>
-          </button>
-        </div>
-      </div>
-
-      {/* Floating Particles Effect */}
-      <div className="absolute inset-0 pointer-events-none">
-        {[...Array(20)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute w-1 h-1 bg-white rounded-full"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-            }}
-            animate={{
-              y: [0, -100, 0],
-              x: [0, Math.random() * 50 - 25, 0],
-              opacity: [0, 1, 0],
-              scale: [0, 1, 0],
-            }}
-            transition={{
-              duration: 10 + Math.random() * 20,
-              repeat: Infinity,
-              delay: Math.random() * 10,
-              ease: "linear"
-            }}
-          />
-        ))}
+          </motion.button>
+        </motion.div>
       </div>
     </motion.div>
   );
