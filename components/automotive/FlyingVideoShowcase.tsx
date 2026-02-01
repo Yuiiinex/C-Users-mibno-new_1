@@ -452,7 +452,7 @@ export default function FlyingVideoShowcase() {
             className="w-full mb-8"
           >
             <motion.div
-              className="relative rounded-3xl overflow-hidden shadow-2xl bg-black w-full"
+              className="relative rounded-2xl overflow-hidden shadow-2xl bg-black w-full max-w-4xl mx-auto"
               whileHover={{
                 rotateY: 10,
                 rotateX: -10,
@@ -464,7 +464,7 @@ export default function FlyingVideoShowcase() {
                 damping: 30
               }}
             >
-              <div className="relative aspect-video w-full">
+              <div className="relative aspect-video w-full max-w-4xl mx-auto" style={{ aspectRatio: '16/9', maxHeight: '400px' }}>
                 <video
                   ref={videoRef}
                   className="w-full h-full object-cover"
