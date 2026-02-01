@@ -442,21 +442,21 @@ export default function FlyingVideoShowcase() {
           </p>
         </motion.div>
 
-        {/* Flying Video Grid */}
-        <div className="grid lg:grid-cols-3 gap-8 items-start">
-          {/* Main Flying Video Player */}
+        {/* Full Width Flying Video Grid */}
+        <div className="w-full">
+          {/* Main Flying Video Player - Full Width */}
           <motion.div
             initial={{ opacity: 0, x: -3000, rotateY: 180 }}
             animate={{ opacity: 1, x: 0, rotateY: 0 }}
             transition={{ duration: 2, type: "spring", stiffness: 40 }}
-            className="lg:col-span-2"
+            className="w-full mb-12"
           >
             <motion.div
-              className="relative rounded-3xl overflow-hidden shadow-2xl bg-black"
+              className="relative rounded-3xl overflow-hidden shadow-2xl bg-black w-full"
               whileHover={{
                 rotateY: 10,
                 rotateX: -10,
-                scale: 1.03,
+                scale: 1.02,
               }}
               transition={{
                 type: "spring",
@@ -464,7 +464,7 @@ export default function FlyingVideoShowcase() {
                 damping: 30
               }}
             >
-              <div className="relative aspect-video">
+              <div className="relative aspect-video w-full">
                 <video
                   ref={videoRef}
                   className="w-full h-full object-cover"
@@ -540,31 +540,33 @@ export default function FlyingVideoShowcase() {
             </motion.div>
           </motion.div>
 
-          {/* Flying Video Playlist */}
+          {/* Flying Video Playlist - Full Width Grid */}
           <motion.div
             initial={{ opacity: 0, x: 3000, rotateY: -180 }}
             animate={{ opacity: 1, x: 0, rotateY: 0 }}
             transition={{ duration: 2, type: "spring", stiffness: 40, delay: 0.5 }}
-            className="space-y-6"
+            className="w-full"
           >
             <motion.h3 
-              className="text-3xl font-bold text-white mb-6"
+              className="text-3xl font-bold text-white mb-8 text-center"
               initial={{ rotateY: -180, scale: 0.5 }}
               animate={{ rotateY: 0, scale: 1 }}
               transition={{ duration: 1, type: "spring" }}
             >
-              Flying Videos
+              Flying Videos Gallery
             </motion.h3>
             
-            {videos.map((video, index) => (
-              <FlyingVideoCard
-                key={video.id}
-                video={video}
-                index={index}
-                isActive={currentVideo === index}
-                onClick={() => handleVideoSelect(index)}
-              />
-            ))}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 w-full">
+              {videos.map((video, index) => (
+                <FlyingVideoCard
+                  key={video.id}
+                  video={video}
+                  index={index}
+                  isActive={currentVideo === index}
+                  onClick={() => handleVideoSelect(index)}
+                />
+              ))}
+            </div>
           </motion.div>
         </div>
 
