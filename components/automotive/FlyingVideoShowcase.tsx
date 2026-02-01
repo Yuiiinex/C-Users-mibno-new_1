@@ -414,7 +414,7 @@ export default function FlyingVideoShowcase() {
       </div>
       
       {/* Main Content */}
-      <div className="relative z-10 w-full">
+      <div className="relative z-10 w-full py-24">
         {/* Flying Title */}
         <motion.div
           initial={{ opacity: 0, y: -200, rotateX: 90 }}
