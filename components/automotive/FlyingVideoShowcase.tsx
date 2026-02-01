@@ -423,33 +423,6 @@ export default function FlyingVideoShowcase() {
     >
       {/* Flying Background Elements */}
       <div className="absolute inset-0">
-        {/* Flying paper layers */}
-        {[...Array(8)].map((_, i) => {
-          // Use deterministic values based on index to avoid hydration errors
-          const positions = [
-            { left: 60, top: 95 },
-            { left: 73, top: 86 },
-            { left: 51, top: 67 },
-            { left: 12, top: 37 },
-            { left: 44, top: 58 },
-            { left: 95, top: 1 },
-            { left: 41, top: 70 },
-            { left: 47, top: 80 }
-          ];
-          
-          const pos = positions[i % positions.length];
-          
-          return (
-            <div
-              key={i}
-              className="absolute w-32 h-40 bg-gradient-to-br from-white/5 to-transparent rounded-lg shadow-2xl"
-              style={{
-                left: `${pos.left}%`,
-                top: `${pos.top}%`
-              }}
-            />
-          );
-        })}
         {/* Background gradient */}
         <div
           className="absolute inset-0 bg-gradient-to-r from-blue-900/20 via-purple-900/20 to-pink-900/20"
