@@ -306,20 +306,7 @@ const FlyingVideoCard = ({ video, index, isActive, onClick }: {
             </motion.div>
           </motion.div>
           
-          {/* Video Info */}
-          <div className="absolute bottom-0 left-0 right-0 p-4">
-            <motion.h4
-              className="text-white font-bold text-lg mb-1"
-              animate={{
-                scale: isActive ? 1.05 : 1
-              }}
-            >
-              {video.title}
-            </motion.h4>
-            <motion.p className="text-gray-300 text-sm">
-              {video.description}
-            </motion.p>
-          </div>
+          {/* Video Info - Removed for cleaner look */}
           
           {/* Active Flying Indicator */}
           {isActive && (
