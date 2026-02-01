@@ -81,14 +81,9 @@ export default function HomePage() {
               </div>
             </RevealText>
 
+            {/* Flying Video Showcase in Modèles Exceptionnels Section */}
             <RevealText delay={0.4}>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3">
-                {cars.map((car, index) => (
-                  <LuxuryCard key={car.id} hover={true}>
-                    <CarCard car={car} index={index} />
-                  </LuxuryCard>
-                ))}
-              </div>
+              <FlyingVideoShowcase />
             </RevealText>
           </div>
         </section>
