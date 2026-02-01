@@ -5,7 +5,6 @@ import { useTranslations } from 'next-intl';
 import Hero from '@/components/automotive/Hero';
 import CarCard from '@/components/automotive/CarCard';
 import BrandBar from '@/components/automotive/BrandBar';
-import FlyingVideoShowcase from '@/components/automotive/FlyingVideoShowcase';
 import { cars } from '@/lib/cars';
 import { LuxurySection, LuxuryCard, RevealText } from '@/components/ui/luxury-section';
 
@@ -79,11 +78,6 @@ export default function HomePage() {
                   {t('featured.subtitle')}
                 </p>
               </div>
-            </RevealText>
-
-            {/* Flying Video Showcase - Full Container Width */}
-            <RevealText delay={0.4}>
-              <FlyingVideoShowcase />
             </RevealText>
           </div>
         </section>
