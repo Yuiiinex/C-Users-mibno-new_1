@@ -83,30 +83,36 @@ export const ParallaxBackground = ({ children, className = "" }: { children: Rea
 };
 
 // Floating particles for luxury ambiance
-export const LuxuryParticles = () => {
-  const particles = Array.from({ length: 20 }, (_, i) => i);
+export const LuxuryParticles = ({ count = 20 }: { count?: number }) => {
+  // Generate deterministic positions based on index to avoid hydration mismatch
+  const generatePosition = (index: number, max: number) => {
+    const seed = index * 9301 + 49297; // Prime numbers for better distribution
+    return ((seed * 9301 + 49297) % max) / max;
+  };
+
+  const particles = Array.from({ length: count }, (_, i) => i);
 
   return (
     <div className="fixed inset-0 pointer-events-none overflow-hidden z-50">
       {particles.map((i) => (
         <motion.div
           key={i}
-          className="absolute w-1 h-1 bg-luxury-gold rounded-full"
+          className="absolute w-1 h-1 bg-white rounded-full"
           style={{
-            left: `${Math.random() * 100}%`,
-            top: `${Math.random() * 100}%`,
+            left: `${generatePosition(i, 100) * 100}%`,
+            top: `${generatePosition(i + 100, 100) * 100}%`,
           }}
           animate={{
             y: [0, -100, 0],
-            x: [0, Math.random() * 50 - 25, 0],
+            x: [0, (generatePosition(i, 50) - 0.5) * 50, 0],
             opacity: [0, 1, 0],
             scale: [0, 1, 0],
           }}
           transition={{
-            duration: 3 + Math.random() * 4,
+            duration: 10 + (i % 5) * 2,
             repeat: Infinity,
-            delay: Math.random() * 5,
-            ease: "easeInOut",
+            delay: i * 0.5,
+            ease: "linear"
           }}
         />
       ))}
