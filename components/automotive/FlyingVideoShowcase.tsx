@@ -19,84 +19,84 @@ const videos: Video[] = [
     title: 'Luxury Transport',
     description: 'Experience premium vehicle transport services',
     src: '/videos/luxury-transport.mp4',
-    thumbnail: '/images/c1.jpg'
+    thumbnail: '/images/v2.jpg'
   },
   {
     id: '2',
     title: 'Professional Service',
     description: 'Expert handling of your valuable vehicles',
     src: '/videos/professional-service.mp4',
-    thumbnail: '/images/c2.jpg'
+    thumbnail: '/images/v2.jpg'
   },
   {
     id: '3',
     title: 'Global Reach',
     description: 'International vehicle delivery solutions',
     src: '/videos/global-reach.mp4',
-    thumbnail: '/images/c3.jpg'
+    thumbnail: '/images/v2.jpg'
   },
   {
     id: '4',
     title: 'Secure Transport',
     description: 'Safe and secure vehicle transportation',
     src: '/videos/secure-transport.mp4',
-    thumbnail: '/images/c4.jpg'
+    thumbnail: '/images/v2.jpg'
   },
   {
     id: '5',
     title: 'Executive Service',
     description: 'Premium executive vehicle transport',
     src: '/videos/executive-service.mp4',
-    thumbnail: '/images/c5.jpg'
+    thumbnail: '/images/v2.jpg'
   },
   {
     id: '6',
     title: 'Express Delivery',
     description: 'Fast and reliable delivery service',
     src: '/videos/express-delivery.mp4',
-    thumbnail: '/images/c6.jpg'
+    thumbnail: '/images/v2.jpg'
   },
   {
     id: '7',
     title: 'Premium Care',
     description: 'White-glove vehicle handling',
     src: '/videos/premium-care.mp4',
-    thumbnail: '/images/c7.jpg'
+    thumbnail: '/images/v2.jpg'
   },
   {
     id: '8',
     title: 'VIP Transport',
     description: 'Exclusive VIP vehicle transport',
     src: '/videos/vip-transport.mp4',
-    thumbnail: '/images/c8.jpg'
+    thumbnail: '/images/v2.jpg'
   },
   {
     id: '9',
     title: 'Classic Transport',
     description: 'Classic vehicle transport services',
     src: '/videos/classic-transport.mp4',
-    thumbnail: '/images/c9.jpg'
+    thumbnail: '/images/v2.jpg'
   },
   {
     id: '10',
     title: 'Modern Transport',
     description: 'Modern vehicle transport solutions',
     src: '/videos/modern-transport.mp4',
-    thumbnail: '/images/c10.jpg'
+    thumbnail: '/images/v2.jpg'
   },
   {
     id: '11',
     title: 'Elite Transport',
     description: 'Elite vehicle transport services',
     src: '/videos/elite-transport.mp4',
-    thumbnail: '/images/c11.jpg'
+    thumbnail: '/images/v2.jpg'
   },
   {
     id: '12',
     title: 'First-Class Transport',
     description: 'First-class vehicle transport',
     src: '/videos/first-class-transport.mp4',
-    thumbnail: '/images/c12.jpg'
+    thumbnail: '/images/v2.jpg'
   }
 ];
 
@@ -246,14 +246,13 @@ const FlyingVideoCard = ({ video, index, isActive, onClick }: {
         }}
       >
         {/* Video Thumbnail */}
-        <div className="relative w-full h-full">
-          {/* Thumbnail */}
+        <div className="relative aspect-video">
           <img
             src={video.thumbnail}
             alt={video.title}
             className="w-full h-full object-cover"
-            loading="lazy"
           />
+          
           {/* Paper-like texture overlay */}
           <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
           
