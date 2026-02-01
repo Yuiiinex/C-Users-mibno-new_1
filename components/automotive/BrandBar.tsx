@@ -22,24 +22,6 @@ export default function BrandBar() {
     let isDown = false;
     let startX = 0;
     let scrollLeft = 0;
-    let animationId: number;
-
-    const autoScroll = () => {
-      if (!isPaused && !isDown) {
-        brandBar.scrollLeft += 1; // Increased from 0.5 to 1 for faster scrolling
-
-        const firstWidth = firstSet.scrollWidth;
-        if (brandBar.scrollLeft >= firstWidth) {
-          brandBar.scrollLeft -= firstWidth;
-        }
-      }
-      animationId = requestAnimationFrame(autoScroll);
-    };
-
-    // Start auto-scroll after a small delay to ensure everything is loaded
-    const startTimeout = setTimeout(() => {
-      autoScroll();
-    }, 100);
 
     // --- Drag handlers ---
     const handleMouseDown = (e: MouseEvent) => {
@@ -76,8 +58,6 @@ export default function BrandBar() {
     brandBar.addEventListener('mousemove', handleMouseMove);
 
     return () => {
-      clearTimeout(startTimeout);
-      cancelAnimationFrame(animationId);
       brandBar.removeEventListener('mousedown', handleMouseDown);
       brandBar.removeEventListener('mouseup', handleMouseUp);
       brandBar.removeEventListener('mouseleave', handleMouseLeave);
