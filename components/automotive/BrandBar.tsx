@@ -1,7 +1,6 @@
 'use client';
 
 import { useRef, useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
 
 export default function BrandBar() {
   const brandBarRef = useRef<HTMLDivElement>(null);
@@ -84,66 +83,34 @@ export default function BrandBar() {
             {/* First set */}
             <div ref={firstSetRef} className="flex space-x-4">
               {[...Array(11)].map((_, i) => (
-                <motion.div
+                <div
                   key={i}
                   className="w-24 h-24 rounded overflow-hidden flex-shrink-0 hover:opacity-80 transition-opacity"
                   onClick={(e) => handleLogoClick(i + 1, e)}
-                  initial={{ opacity: 0, scale: 0, rotate: i * 30 }}
-                  animate={{ opacity: 1, scale: 1, rotate: 0 }}
-                  transition={{ duration: 0.5, delay: i * 0.1 }}
-                  whileHover={{ 
-                    scale: 1.1,
-                    rotateZ: 5,
-                    z: 50
-                  }}
-                  whileTap={{ 
-                    scale: 0.95,
-                    rotateZ: -5
-                  }}
-                  style={{
-                    transformStyle: 'preserve-3d',
-                    perspective: 1000,
-                  }}
                 >
                   <img
                     src={`/images/Brand${i + 1}.png`}
                     alt={`Brand ${i + 1}`}
                     className="w-full h-full object-cover"
                   />
-                </motion.div>
+                </div>
               ))}
             </div>
 
             {/* Duplicate set */}
             <div className="flex space-x-4">
               {[...Array(11)].map((_, i) => (
-                <motion.div
+                <div
                   key={i + 11}
                   className="w-24 h-24 rounded overflow-hidden flex-shrink-0 hover:opacity-80 transition-opacity"
                   onClick={(e) => handleLogoClick(i + 1, e)}
-                  initial={{ opacity: 0, scale: 0, rotate: (i + 11) * 30 }}
-                  animate={{ opacity: 1, scale: 1, rotate: 0 }}
-                  transition={{ duration: 0.5, delay: (i + 11) * 0.1 }}
-                  whileHover={{ 
-                    scale: 1.1,
-                    rotateZ: 5,
-                    z: 50
-                  }}
-                  whileTap={{ 
-                    scale: 0.95,
-                    rotateZ: -5
-                  }}
-                  style={{
-                    transformStyle: 'preserve-3d',
-                    perspective: 1000,
-                  }}
                 >
                   <img
                     src={`/images/Brand${i + 1}.png`}
                     alt={`Brand ${i + 1}`}
                     className="w-full h-full object-cover"
                   />
-                </motion.div>
+                </div>
               ))}
             </div>
           </div>
