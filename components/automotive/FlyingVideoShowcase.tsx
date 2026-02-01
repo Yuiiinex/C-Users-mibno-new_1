@@ -216,7 +216,9 @@ const FlyingVideoCard = ({ video, index, isActive, onClick }: {
   return (
     <motion.div
       className="relative"
-      {...flyingAnimation}
+      initial={flyingAnimation.initial}
+      animate={flyingAnimation.animate}
+      transition={flyingAnimation.transition as any}
       whileInView="animate"
       viewport={{ once: true, margin: "-100px" }}
       whileHover={{ 
