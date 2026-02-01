@@ -414,16 +414,16 @@ export default function FlyingVideoShowcase() {
       </div>
       
       {/* Main Content */}
-      <div className="relative z-10 w-full py-24">
+      <div className="relative z-10 w-full py-12">
         {/* Flying Title */}
         <motion.div
           initial={{ opacity: 0, y: -200, rotateX: 90 }}
           animate={{ opacity: 1, y: 0, rotateX: 0 }}
           transition={{ duration: 1.5, type: "spring", stiffness: 50 }}
-          className="text-center mb-16 px-4"
+          className="text-center mb-8 px-4"
         >
           <motion.h2 
-            className="text-5xl md:text-7xl font-bold mb-4"
+            className="text-3xl md:text-5xl font-bold mb-4"
             animate={{
               rotateZ: [0, 1, -1, 0],
             }}
@@ -437,7 +437,7 @@ export default function FlyingVideoShowcase() {
               Flying Video Showcase
             </span>
           </motion.h2>
-          <p className="text-xl text-gray-300 max-w-2xl mx-auto">
+          <p className="text-lg text-gray-300 max-w-2xl mx-auto">
             Watch videos fly in from outside the screen like magical papers!
           </p>
         </motion.div>
@@ -449,7 +449,7 @@ export default function FlyingVideoShowcase() {
             initial={{ opacity: 0, x: -3000, rotateY: 180 }}
             animate={{ opacity: 1, x: 0, rotateY: 0 }}
             transition={{ duration: 2, type: "spring", stiffness: 40 }}
-            className="w-full mb-12"
+            className="w-full mb-8"
           >
             <motion.div
               className="relative rounded-3xl overflow-hidden shadow-2xl bg-black w-full"
@@ -548,7 +548,7 @@ export default function FlyingVideoShowcase() {
             className="w-full"
           >
             <motion.h3 
-              className="text-3xl font-bold text-white mb-8 text-center"
+              className="text-2xl font-bold text-white mb-6 text-center"
               initial={{ rotateY: -180, scale: 0.5 }}
               animate={{ rotateY: 0, scale: 1 }}
               transition={{ duration: 1, type: "spring" }}
@@ -572,7 +572,7 @@ export default function FlyingVideoShowcase() {
 
         {/* Flying Navigation Controls */}
         <motion.div
-          className="flex justify-center mt-12 gap-6"
+          className="flex justify-center mt-8 gap-6"
           initial={{ opacity: 0, y: 200, rotateX: -90 }}
           animate={{ opacity: 1, y: 0, rotateX: 0 }}
           transition={{ duration: 1.5, delay: 1 }}
