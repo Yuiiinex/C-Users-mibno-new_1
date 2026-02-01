@@ -442,7 +442,7 @@ export default function FlyingVideoShowcase() {
           return (
             <motion.div
               key={i}
-              className="absolute w-24 h-32 bg-gradient-to-br from-white/5 to-transparent rounded-lg shadow-2xl"
+              className="absolute w-32 h-40 bg-gradient-to-br from-white/5 to-transparent rounded-lg shadow-2xl"
               style={{
                 left: `${pos.left}%`,
                 top: `${pos.top}%`
@@ -476,7 +476,7 @@ export default function FlyingVideoShowcase() {
       </div>
       
       {/* Main Content */}
-      <div className="relative z-10 w-full py-8">
+      <div className="relative z-10 w-full py-12 pt-16">
         {/* Flying Video Grid */}
         <div className="w-full px-4 sm:px-6 lg:px-8">
           {/* Flying Video Playlist - Full Width Grid */}
