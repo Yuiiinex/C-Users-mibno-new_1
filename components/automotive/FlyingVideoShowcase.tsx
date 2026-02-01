@@ -238,13 +238,14 @@ const FlyingVideoCard = ({ video, index, isActive, onClick }: {
     >
       <motion.div
         className="relative rounded-2xl overflow-hidden cursor-pointer shadow-2xl"
-        animate={{
-          rotateZ: isActive ? Math.sin(Date.now() * 0.001) * 2 : 0,
-        }}
+        animate={isActive ? {
+          rotateZ: [0, 2, -2, 0],
+        } : {}}
         transition={{
           type: "spring",
           stiffness: 400,
-          damping: 25
+          damping: 25,
+          duration: 2,
         }}
       >
         {/* Video Thumbnail */}
