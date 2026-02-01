@@ -20,13 +20,10 @@ export const localeFlags: Record<Locale, string> = {
   'ar-AE': '🇦🇪',
 };
 
-export default getRequestConfig(async ({ requestLocale }) => {
-  // requestLocale is a promise, await it to get the locale
-  let locale = await requestLocale;
-
+export default getRequestConfig(async ({ locale }) => {
   // Validate that the incoming `locale` parameter is valid
   if (!locale || !locales.includes(locale as Locale)) {
-    locale = defaultLocale;
+    notFound();
   }
 
   return {
