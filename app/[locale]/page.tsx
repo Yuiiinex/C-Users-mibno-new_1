@@ -274,8 +274,13 @@ export default function HomePage() {
         </section>
       </LuxurySection>
 
-      {/* Flying Video Showcase */}
+      {/* Original Image Carousel - First Section */}
       <LuxurySection index={6} background="crystal" showParticles={true}>
+        <ImageCarousel />
+      </LuxurySection>
+
+      {/* Flying Video Showcase - New Section Below */}
+      <LuxurySection index={7} background="gradient" showParticles={true}>
         <FlyingVideoShowcase />
       </LuxurySection>
     </>
