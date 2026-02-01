@@ -1,6 +1,7 @@
 import { prisma } from '@/lib/prisma'
 import ProductCard from '@/components/ProductCard'
 import ProductFilters from '@/components/ProductFilters'
+import { Suspense } from 'react'
 
 interface SearchParams {
   category?: string
@@ -60,7 +61,9 @@ export default async function ProductsPage({
       <h1 className="text-3xl font-bold mb-8">All Products</h1>
       <div className="flex flex-col lg:flex-row gap-8">
         <aside className="lg:w-1/4">
-          <ProductFilters categories={categories} />
+          <Suspense fallback={<div className="animate-pulse bg-gray-200 h-64 rounded-lg"></div>}>
+            <ProductFilters categories={categories} />
+          </Suspense>
         </aside>
         <main className="lg:w-3/4">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
