@@ -90,9 +90,7 @@ export default function HomePage() {
       </LuxurySection>
 
       <LuxurySection index={2} background="gradient" showParticles={true}>
-        <div className="relative">
-          <BrandBar />
-        </div>
+        <BrandBar />
       </LuxurySection>
 
       {/* Business Description Section */}
