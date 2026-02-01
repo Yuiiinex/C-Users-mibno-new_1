@@ -223,18 +223,16 @@ const FlyingVideoCard = ({ video, index, isActive, onClick }: {
       viewport={{ once: true, margin: "-100px" }}
       whileHover={{ 
         scale: 1.05,
-        rotateZ: 5,
       }}
       whileTap={{ 
         scale: 0.95,
-        rotateZ: -5
       }}
       onClick={onClick}
     >
       <motion.div
         className="relative rounded-2xl overflow-hidden cursor-pointer shadow-2xl"
         animate={isActive ? {
-          rotateZ: [0, 2, -2, 0],
+          rotate: [0, 2, -2, 0],
         } : {}}
         transition={{
           duration: 0.6,
