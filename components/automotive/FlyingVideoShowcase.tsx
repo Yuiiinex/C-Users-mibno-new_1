@@ -4,6 +4,7 @@ import { useState, useRef, useEffect } from 'react';
 import { motion, useInView, useScroll, useTransform } from 'framer-motion';
 import { useTranslations } from 'next-intl';
 import { Play, Pause, Volume2, VolumeX, Maximize2 } from 'lucide-react';
+import OptimizedImage from '@/components/optimizations/ImageOptimizer';
 
 interface Video {
   id: string;
@@ -246,13 +247,14 @@ const FlyingVideoCard = ({ video, index, isActive, onClick }: {
         }}
       >
         {/* Video Thumbnail */}
-        <div className="relative aspect-video">
-          <img
+        <div className="relative w-full h-full">
+          {/* Optimized Thumbnail */}
+          <OptimizedImage
             src={video.thumbnail}
             alt={video.title}
             className="w-full h-full object-cover"
+            priority={index < 4}
           />
-          
           {/* Paper-like texture overlay */}
           <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
           
