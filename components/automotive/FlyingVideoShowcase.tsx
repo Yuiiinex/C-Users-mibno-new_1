@@ -40,6 +40,34 @@ const videos: Video[] = [
     description: 'Safe and secure vehicle transportation',
     src: '/videos/secure-transport.mp4',
     thumbnail: '/images/c4.jpg'
+  },
+  {
+    id: '5',
+    title: 'Executive Service',
+    description: 'Premium executive vehicle transport',
+    src: '/videos/executive-service.mp4',
+    thumbnail: '/images/c5.jpg'
+  },
+  {
+    id: '6',
+    title: 'Express Delivery',
+    description: 'Fast and reliable delivery service',
+    src: '/videos/express-delivery.mp4',
+    thumbnail: '/images/c6.jpg'
+  },
+  {
+    id: '7',
+    title: 'Premium Care',
+    description: 'White-glove vehicle handling',
+    src: '/videos/premium-care.mp4',
+    thumbnail: '/images/c7.jpg'
+  },
+  {
+    id: '8',
+    title: 'VIP Transport',
+    description: 'Exclusive VIP vehicle transport',
+    src: '/videos/vip-transport.mp4',
+    thumbnail: '/images/c8.jpg'
   }
 ];
 
@@ -464,42 +492,6 @@ export default function FlyingVideoShowcase() {
             </div>
           </motion.div>
         </div>
-
-        {/* Flying Navigation Controls */}
-        <motion.div
-          className="flex justify-center mt-8 gap-6"
-          initial={{ opacity: 0, y: 200, rotateX: -90 }}
-          animate={{ opacity: 1, y: 0, rotateX: 0 }}
-          transition={{ duration: 1.5, delay: 1 }}
-        >
-          <motion.button
-            onClick={prevVideo}
-            className="p-4 bg-gradient-to-r from-blue-500/20 to-purple-500/20 backdrop-blur-sm rounded-full text-white hover:from-blue-500/30 hover:to-purple-500/30 transition-all duration-300 border border-white/20"
-            whileHover={{ 
-              scale: 1.3, 
-              rotateY: 360,
-            }}
-            whileTap={{ scale: 0.8 }}
-          >
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-            </svg>
-          </motion.button>
-          
-          <motion.button
-            onClick={nextVideo}
-            className="p-4 bg-gradient-to-r from-purple-500/20 to-pink-500/20 backdrop-blur-sm rounded-full text-white hover:from-purple-500/30 hover:to-pink-500/30 transition-all duration-300 border border-white/20"
-            whileHover={{ 
-              scale: 1.3, 
-              rotateY: 360,
-            }}
-            whileTap={{ scale: 0.8 }}
-          >
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-            </svg>
-          </motion.button>
-        </motion.div>
       </div>
     </motion.div>
   );
