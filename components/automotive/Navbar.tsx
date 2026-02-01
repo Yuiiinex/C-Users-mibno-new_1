@@ -69,35 +69,21 @@ export default function Navbar() {
             </button>
 
             {/* Logo */}
-          
-<Link href="/" className="mr-8">
-  <motion.div
-    whileHover={{ scale: 1.08 }}
-    transition={{ type: "spring", stiffness: 250, damping: 18 }}
-    className="
-      flex items-center
-      px-4 py-2
-      rounded-xl
-      bg-black/50
-      border border-white/10
-      overflow-hidden
-    "
-  >
-    <motion.img
-      src="/images/logo1.png"
-      alt="WExpressCars Logo"
-      className="h-12 w-20 object-contain"
-      whileHover={{ scale: 1.05 }}
-      transition={{ type: "spring", stiffness: 300, damping: 20 }}
-    />
-  </motion.div>
-</Link>
+            <Link href="/" className="mr-16 ml-24">
+              <motion.img
+                src="/images/logo1.png"
+                alt="WExpressCars Logo"
+                className="h-24 w-44 object-contain"
+                whileHover={{ scale: 1.05 }}
+                transition={{ type: "spring", stiffness: 300, damping: 20 }}
+              />
+            </Link>
 
 
 
 
             {/* Desktop Navigation */}
-            <div className={`hidden md:flex items-center ${isRTL ? 'space-x-0 space-x-reverse' : 'space-x-8'} ${isRTL ? 'mr-8' : 'ml-8'}`}>
+            <div className={`hidden md:flex items-center ${isRTL ? 'space-x-0 space-x-reverse' : 'space-x-8'} ${isRTL ? 'mr-48' : 'ml-48'}`}>
               {navItems.map((item, index) => (
                 <motion.div
                   key={item.href}

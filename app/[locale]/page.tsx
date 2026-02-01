@@ -118,7 +118,7 @@ export default function HomePage() {
                 {/* Business Text */}
                 <div className="space-y-6">
                   <h2 className="text-3xl font-bold text-white mb-4">
-                    <span className="text-luxury-gold">WEX</span>PRESSCARS Trusted in Luxury Transport Since 2009
+                    <span className="text-white">WEX</span>PRESSCARS Trusted in Luxury Transport Since 2009
                   </h2>
                   <p className="text-lg text-white/80 leading-relaxed text-justify">
                     {t('business.description') || 'At WEXPRESSCARS, we specialize in premium vehicle logistics powered by smart IT systems, ensuring high-value cars are transported safely and efficiently throughout France and the EU. With years of experience and cutting-edge tracking technology, we bring reliability and precision to every delivery.'}
@@ -127,11 +127,11 @@ export default function HomePage() {
                   <RevealText delay={0.8}>
                     <div className="grid grid-cols-2 gap-6 mt-8">
                       <div className="text-center">
-                        <div className="text-3xl font-bold text-luxury-gold mb-2">100%</div>
+                        <div className="text-3xl font-bold text-white mb-2">100%</div>
                         <div className="text-white/70">{t('business.stats.reliability') || 'Reliability'}</div>
                       </div>
                       <div className="text-center">
-                        <div className="text-3xl font-bold text-luxury-gold mb-2">24/7</div>
+                        <div className="text-3xl font-bold text-white mb-2">24/7</div>
                         <div className="text-white/70">{t('business.stats.service') || 'Service'}</div>
                       </div>
                     </div>
@@ -169,9 +169,9 @@ export default function HomePage() {
             </RevealText>
 
             <RevealText delay={1.2}>
-              <LuxuryCard hover={false}>
+              <div className="bg-black/30 backdrop-blur-sm rounded-xl border border-white/10 p-8">
                 <form className="space-y-6">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="space-y-6">
                     <div>
                       <label htmlFor="name" className="block text-sm font-medium text-white mb-2">
                         {tContact('form.name')}
@@ -180,7 +180,7 @@ export default function HomePage() {
                         type="text"
                         id="name"
                         name="name"
-                        className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/50 focus:outline-none focus:border-luxury-gold focus:bg-white/15 transition-colors"
+                        className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/50 focus:outline-none focus:border-blue-400 focus:bg-white/15 transition-colors"
                         placeholder={tContact('form.namePlaceholder')}
                         required
                       />
@@ -194,7 +194,7 @@ export default function HomePage() {
                         type="email"
                         id="email"
                         name="email"
-                        className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/50 focus:outline-none focus:border-luxury-gold focus:bg-white/15 transition-colors"
+                        className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/50 focus:outline-none focus:border-blue-400 focus:bg-white/15 transition-colors"
                         placeholder={tContact('form.emailPlaceholder')}
                         required
                       />
@@ -208,7 +208,7 @@ export default function HomePage() {
                         type="tel"
                         id="phone"
                         name="phone"
-                        className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/50 focus:outline-none focus:border-luxury-gold focus:bg-white/15 transition-colors"
+                        className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/50 focus:outline-none focus:border-blue-400 focus:bg-white/15 transition-colors"
                         placeholder={tContact('form.phonePlaceholder')}
                       />
                     </div>
@@ -221,7 +221,7 @@ export default function HomePage() {
                         id="message"
                         name="message"
                         rows={5}
-                        className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/50 focus:outline-none focus:border-luxury-gold focus:bg-white/15 transition-colors resize-none"
+                        className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/50 focus:outline-none focus:border-blue-400 focus:bg-white/15 transition-colors resize-none"
                         placeholder={tContact('form.messagePlaceholder')}
                         required
                       />
@@ -232,7 +232,7 @@ export default function HomePage() {
                     <div className="flex flex-col sm:flex-row gap-4 justify-center">
                       <button
                         type="submit"
-                        className="px-12 py-4 bg-luxury-gold text-black font-semibold rounded-lg hover:bg-luxury-gold/90 transition-colors text-lg flex-1 sm:flex-none"
+                        className="px-12 py-4 bg-white/20 text-white font-semibold rounded-lg hover:bg-white/30 transition-colors text-lg flex-1 sm:flex-none border border-white/20"
                       >
                         {tContact('form.submit')}
                       </button>
@@ -251,7 +251,7 @@ export default function HomePage() {
                   </div>
                 </div>
               </form>
-            </LuxuryCard>
+            </div>
           </RevealText>
         </div>
       </section>
