@@ -434,11 +434,11 @@ export default function FlyingVideoShowcase() {
             }}
           >
             <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
-              Flying Video Showcase
+              Luxury Transport
             </span>
           </motion.h2>
           <p className="text-lg text-gray-300 max-w-2xl mx-auto">
-            Watch videos fly in from outside the screen like magical papers!
+            Experience premium vehicle transport services
           </p>
         </motion.div>
 
@@ -547,15 +547,6 @@ export default function FlyingVideoShowcase() {
             transition={{ duration: 2, type: "spring", stiffness: 40, delay: 0.5 }}
             className="w-full"
           >
-            <motion.h3 
-              className="text-2xl font-bold text-white mb-6 text-center"
-              initial={{ rotateY: -180, scale: 0.5 }}
-              animate={{ rotateY: 0, scale: 1 }}
-              transition={{ duration: 1, type: "spring" }}
-            >
-              Flying Videos Gallery
-            </motion.h3>
-            
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 w-full">
               {videos.map((video, index) => (
                 <FlyingVideoCard
