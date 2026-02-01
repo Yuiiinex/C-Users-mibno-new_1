@@ -68,8 +68,8 @@ export default function HomePage() {
       
       {/* All Cars Section */}
       <LuxurySection index={1} background="luxury">
-        <section className="py-24 px-4 sm:px-6 lg:px-8">
-          <div className="max-w-7xl mx-auto">
+        <section className="py-24 px-0 sm:px-0 lg:px-0 w-full">
+          <div className="w-full">
             <RevealText delay={0.2}>
               <div className="text-center mb-16">
                 <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
@@ -81,7 +81,7 @@ export default function HomePage() {
               </div>
             </RevealText>
 
-            {/* Flying Video Showcase in Modèles Exceptionnels Section */}
+            {/* Flying Video Showcase - Full Container Width */}
             <RevealText delay={0.4}>
               <FlyingVideoShowcase />
             </RevealText>
