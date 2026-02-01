@@ -492,11 +492,11 @@ export default function FlyingVideoShowcase() {
             }}
           >
             <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
-              {t('featured.title')}
+              Luxury Transport
             </span>
           </motion.h2>
           <p className="text-lg text-gray-300 max-w-2xl mx-auto">
-            {t('featured.subtitle')}
+            Experience premium vehicle transport services
           </p>
         </motion.div>
 
