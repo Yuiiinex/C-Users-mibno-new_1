@@ -440,38 +440,19 @@ export default function FlyingVideoShowcase() {
           const pos = positions[i % positions.length];
           
           return (
-            <motion.div
+            <div
               key={i}
               className="absolute w-32 h-40 bg-gradient-to-br from-white/5 to-transparent rounded-lg shadow-2xl"
               style={{
                 left: `${pos.left}%`,
                 top: `${pos.top}%`
               }}
-              animate={{
-                opacity: [0.1, 0.3, 0.1],
-                rotate: [0, 1, -1, 0],
-                scale: [1, 1.1, 1],
-              }}
-              transition={{
-                duration: 3 + i * 0.5,
-                repeat: Infinity,
-                ease: "easeInOut",
-                delay: i * 0.2
-              }}
             />
           );
         })}
         {/* Background gradient */}
-        <motion.div
+        <div
           className="absolute inset-0 bg-gradient-to-r from-blue-900/20 via-purple-900/20 to-pink-900/20"
-          animate={{
-            rotate: [0, 360],
-          }}
-          transition={{
-            duration: 60,
-            repeat: Infinity,
-            ease: "linear"
-          }}
         />
       </div>
       
