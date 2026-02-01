@@ -1,0 +1,609 @@
+'use client';
+
+import { useState, useRef, useEffect } from 'react';
+import { motion, useInView, useScroll, useTransform } from 'framer-motion';
+import { Play, Pause, Volume2, VolumeX, Maximize2 } from 'lucide-react';
+
+interface Video {
+  id: string;
+  title: string;
+  description: string;
+  src: string;
+  thumbnail: string;
+}
+
+const videos: Video[] = [
+  {
+    id: '1',
+    title: 'Luxury Transport',
+    description: 'Experience premium vehicle transport services',
+    src: '/videos/luxury-transport.mp4',
+    thumbnail: '/images/c1.jpg'
+  },
+  {
+    id: '2',
+    title: 'Professional Service',
+    description: 'Expert handling of your valuable vehicles',
+    src: '/videos/professional-service.mp4',
+    thumbnail: '/images/c2.jpg'
+  },
+  {
+    id: '3',
+    title: 'Global Reach',
+    description: 'International vehicle delivery solutions',
+    src: '/videos/global-reach.mp4',
+    thumbnail: '/images/c3.jpg'
+  },
+  {
+    id: '4',
+    title: 'Secure Transport',
+    description: 'Safe and secure vehicle transportation',
+    src: '/videos/secure-transport.mp4',
+    thumbnail: '/images/c4.jpg'
+  }
+];
+
+// Flying Paper Video Card
+const FlyingVideoCard = ({ video, index, isActive, onClick }: {
+  video: Video;
+  index: number;
+  isActive: boolean;
+  onClick: () => void;
+}) => {
+  // Different flying animations for each card
+  const getFlyingAnimation = () => {
+    const animations = [
+      // From top left, spinning like paper
+      {
+        initial: { 
+          x: -2000, 
+          y: -1500, 
+          rotate: 720, 
+          scale: 0.3,
+          opacity: 0 
+        },
+        animate: { 
+          x: 0, 
+          y: 0, 
+          rotate: 0, 
+          scale: 1,
+          opacity: 1 
+        },
+        transition: { 
+          duration: 1.5, 
+          delay: index * 0.3,
+          type: "spring",
+          stiffness: 50,
+          damping: 20
+        }
+      },
+      // From right, flipping
+      {
+        initial: { 
+          x: 2000, 
+          y: Math.random() * 800 - 400, 
+          rotateY: 180, 
+          scale: 0.2,
+          opacity: 0 
+        },
+        animate: { 
+          x: 0, 
+          y: 0, 
+          rotateY: 0, 
+          scale: 1,
+          opacity: 1 
+        },
+        transition: { 
+          duration: 1.8, 
+          delay: index * 0.4,
+          type: "spring",
+          stiffness: 40,
+          damping: 25
+        }
+      },
+      // From bottom, bouncing
+      {
+        initial: { 
+          x: Math.random() * 1000 - 500, 
+          y: 2000, 
+          rotate: -540, 
+          scale: 0.4,
+          opacity: 0 
+        },
+        animate: { 
+          x: 0, 
+          y: 0, 
+          rotate: 0, 
+          scale: 1,
+          opacity: 1 
+        },
+        transition: { 
+          duration: 2, 
+          delay: index * 0.5,
+          type: "spring",
+          stiffness: 30,
+          damping: 30
+        }
+      },
+      // From top, fluttering
+      {
+        initial: { 
+          x: Math.random() * 1200 - 600, 
+          y: -1800, 
+          rotate: 1080, 
+          scale: 0.1,
+          opacity: 0 
+        },
+        animate: { 
+          x: 0, 
+          y: 0, 
+          rotate: 0, 
+          scale: 1,
+          opacity: 1 
+        },
+        transition: { 
+          duration: 2.2, 
+          delay: index * 0.6,
+          type: "spring",
+          stiffness: 35,
+          damping: 22
+        }
+      }
+    ];
+    
+    return animations[index % animations.length];
+  };
+
+  const flyingAnimation = getFlyingAnimation();
+
+  return (
+    <motion.div
+      className="relative"
+      {...flyingAnimation}
+      whileInView="animate"
+      viewport={{ once: true, margin: "-100px" }}
+      whileHover={{ 
+        scale: 1.1,
+        rotateZ: 5,
+        z: 50
+      }}
+      whileTap={{ 
+        scale: 0.95,
+        rotateZ: -5
+      }}
+      onClick={onClick}
+      style={{
+        transformStyle: 'preserve-3d',
+        perspective: 1000,
+      }}
+    >
+      <motion.div
+        className="relative rounded-2xl overflow-hidden cursor-pointer shadow-2xl"
+        animate={{
+          rotateZ: isActive ? Math.sin(Date.now() * 0.001) * 2 : 0,
+        }}
+        transition={{
+          type: "spring",
+          stiffness: 400,
+          damping: 25
+        }}
+      >
+        {/* Video Thumbnail */}
+        <div className="relative aspect-video">
+          <img
+            src={video.thumbnail}
+            alt={video.title}
+            className="w-full h-full object-cover"
+          />
+          
+          {/* Paper-like texture overlay */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
+          
+          {/* Flying paper effect */}
+          <motion.div
+            className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-transparent"
+            animate={{
+              opacity: [0.1, 0.3, 0.1],
+              rotate: [0, 1, -1, 0],
+            }}
+            transition={{
+              duration: 4,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+            style={{
+              backdropFilter: 'blur(2px)',
+            }}
+          />
+          
+          {/* Floating Play Button */}
+          <motion.div
+            className="absolute inset-0 flex items-center justify-center"
+            initial={{ scale: 0, rotate: -720 }}
+            animate={{ 
+              scale: 0.9,
+              rotate: -15
+            }}
+            whileHover={{
+              scale: 1.2,
+              rotate: 0
+            }}
+            transition={{
+              type: "spring",
+              stiffness: 300,
+              damping: 20
+            }}
+          >
+            <motion.div 
+              className="w-20 h-20 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center border-2 border-white/40 shadow-2xl"
+              whileHover={{ 
+                scale: 1.2,
+                rotate: 360
+              }}
+            >
+              <Play size={28} className="text-white ml-2" />
+            </motion.div>
+          </motion.div>
+          
+          {/* Video Info */}
+          <div className="absolute bottom-0 left-0 right-0 p-4">
+            <motion.h4
+              className="text-white font-bold text-lg mb-1"
+              animate={{
+                scale: isActive ? 1.05 : 1
+              }}
+            >
+              {video.title}
+            </motion.h4>
+            <motion.p className="text-gray-300 text-sm">
+              {video.description}
+            </motion.p>
+          </div>
+          
+          {/* Active Flying Indicator */}
+          {isActive && (
+            <motion.div
+              className="absolute top-4 right-4"
+              initial={{ scale: 0, rotate: -720 }}
+              animate={{ 
+                scale: [1, 1.3, 1],
+                rotate: 360
+              }}
+              transition={{
+                duration: 2,
+                repeat: Infinity,
+                ease: "easeInOut"
+              }}
+            >
+              <div className="w-6 h-6 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full shadow-lg shadow-blue-500/50" />
+            </motion.div>
+          )}
+          
+          {/* Flying Border Glow */}
+          {isActive && (
+            <motion.div
+              className="absolute inset-0 rounded-2xl pointer-events-none"
+              style={{
+                background: 'linear-gradient(45deg, #3b82f6, #8b5cf6, #ec4899, #06b6d4, #3b82f6)',
+                backgroundSize: '400% 400%',
+                filter: 'blur(3px)',
+              }}
+              animate={{
+                backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
+                opacity: [0.4, 1, 0.4],
+                rotate: [0, 1, -1, 0]
+              }}
+              transition={{
+                duration: 3,
+                repeat: Infinity,
+                ease: "linear"
+              }}
+            />
+          )}
+        </div>
+      </motion.div>
+    </motion.div>
+  );
+};
+
+export default function FlyingVideoShowcase() {
+  const [currentVideo, setCurrentVideo] = useState(0);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [isMuted, setIsMuted] = useState(true);
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end start"]
+  });
+
+  const y = useTransform(scrollYProgress, [0, 1], [0, -100]);
+  const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
+
+  const isInView = useInView(containerRef, { once: false, margin: "-100px" });
+
+  useEffect(() => {
+    if (isInView && !isPlaying) {
+      handlePlay();
+    }
+  }, [isInView]);
+
+  const handlePlay = () => {
+    if (videoRef.current) {
+      videoRef.current.play();
+      setIsPlaying(true);
+    }
+  };
+
+  const handlePause = () => {
+    if (videoRef.current) {
+      videoRef.current.pause();
+      setIsPlaying(false);
+    }
+  };
+
+  const handleVideoSelect = (index: number) => {
+    setCurrentVideo(index);
+    setIsPlaying(false);
+    if (videoRef.current) {
+      videoRef.current.load();
+    }
+  };
+
+  const toggleMute = () => {
+    if (videoRef.current) {
+      videoRef.current.muted = !isMuted;
+      setIsMuted(!isMuted);
+    }
+  };
+
+  const nextVideo = () => {
+    handleVideoSelect((currentVideo + 1) % videos.length);
+  };
+
+  const prevVideo = () => {
+    handleVideoSelect((currentVideo - 1 + videos.length) % videos.length);
+  };
+
+  return (
+    <motion.div 
+      ref={containerRef}
+      style={{ y, opacity }}
+      className="relative min-h-screen bg-gradient-to-br from-black via-gray-900 to-black overflow-hidden"
+    >
+      {/* Flying Background Elements */}
+      <div className="absolute inset-0">
+        {/* Flying paper layers */}
+        {[...Array(8)].map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute w-32 h-40 bg-gradient-to-br from-white/5 to-transparent rounded-lg shadow-2xl"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+            }}
+            animate={{
+              x: [0, Math.random() * 400 - 200, 0],
+              y: [0, Math.random() * 400 - 200, 0],
+              rotate: [0, Math.random() * 720, 0],
+              scale: [0.5, 1, 0.5],
+              opacity: [0, 0.3, 0],
+            }}
+            transition={{
+              duration: 10 + Math.random() * 20,
+              repeat: Infinity,
+              delay: Math.random() * 10,
+              ease: "easeInOut"
+            }}
+          />
+        ))}
+        
+        {/* Background gradient */}
+        <motion.div
+          className="absolute inset-0 bg-gradient-to-r from-blue-900/20 via-purple-900/20 to-pink-900/20"
+          animate={{
+            rotate: [0, 360],
+          }}
+          transition={{
+            duration: 60,
+            repeat: Infinity,
+            ease: "linear"
+          }}
+        />
+      </div>
+      
+      {/* Main Content */}
+      <div className="relative z-10 container mx-auto px-4 py-16">
+        {/* Flying Title */}
+        <motion.div
+          initial={{ opacity: 0, y: -200, rotateX: 90 }}
+          animate={{ opacity: 1, y: 0, rotateX: 0 }}
+          transition={{ duration: 1.5, type: "spring", stiffness: 50 }}
+          className="text-center mb-16"
+        >
+          <motion.h2 
+            className="text-5xl md:text-7xl font-bold mb-4"
+            animate={{
+              rotateZ: [0, 1, -1, 0],
+            }}
+            transition={{
+              duration: 4,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+          >
+            <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+              Flying Video Showcase
+            </span>
+          </motion.h2>
+          <p className="text-xl text-gray-300 max-w-2xl mx-auto">
+            Watch videos fly in from outside the screen like magical papers!
+          </p>
+        </motion.div>
+
+        {/* Flying Video Grid */}
+        <div className="grid lg:grid-cols-3 gap-8 items-start">
+          {/* Main Flying Video Player */}
+          <motion.div
+            initial={{ opacity: 0, x: -3000, rotateY: 180 }}
+            animate={{ opacity: 1, x: 0, rotateY: 0 }}
+            transition={{ duration: 2, type: "spring", stiffness: 40 }}
+            className="lg:col-span-2"
+          >
+            <motion.div
+              className="relative rounded-3xl overflow-hidden shadow-2xl bg-black"
+              whileHover={{
+                rotateY: 10,
+                rotateX: -10,
+                scale: 1.03,
+              }}
+              transition={{
+                type: "spring",
+                stiffness: 300,
+                damping: 30
+              }}
+            >
+              <div className="relative aspect-video">
+                <video
+                  ref={videoRef}
+                  className="w-full h-full object-cover"
+                  onPlay={() => setIsPlaying(true)}
+                  onPause={() => setIsPlaying(false)}
+                  onEnded={nextVideo}
+                  muted={isMuted}
+                  playsInline
+                >
+                  <source src={videos[currentVideo].src} type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
+                
+                {/* Flying Video Overlay */}
+                <motion.div
+                  className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300"
+                  style={{
+                    backdropFilter: 'blur(10px)'
+                  }}
+                >
+                  <div className="absolute bottom-0 left-0 right-0 p-6">
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <h3 className="text-2xl font-bold text-white mb-2">
+                          {videos[currentVideo].title}
+                        </h3>
+                        <p className="text-gray-300">
+                          {videos[currentVideo].description}
+                        </p>
+                      </div>
+                      <div className="flex gap-3">
+                        <motion.button
+                          onClick={isPlaying ? handlePause : handlePlay}
+                          className="p-3 bg-white/20 backdrop-blur-sm rounded-full text-white hover:bg-white/30 transition-all duration-300 hover:scale-110"
+                          whileHover={{ rotate: 360, scale: 1.3 }}
+                          whileTap={{ scale: 0.8 }}
+                        >
+                          {isPlaying ? <Pause size={20} /> : <Play size={20} />}
+                        </motion.button>
+                        <motion.button
+                          onClick={toggleMute}
+                          className="p-3 bg-white/20 backdrop-blur-sm rounded-full text-white hover:bg-white/30 transition-all duration-300 hover:scale-110"
+                          whileHover={{ rotate: 180, scale: 1.3 }}
+                          whileTap={{ scale: 0.8 }}
+                        >
+                          {isMuted ? <VolumeX size={20} /> : <Volume2 size={20} />}
+                        </motion.button>
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+                
+                {/* Flying Border Glow */}
+                <motion.div
+                  className="absolute inset-0 rounded-3xl pointer-events-none"
+                  style={{
+                    background: 'linear-gradient(45deg, #3b82f6, #8b5cf6, #ec4899, #06b6d4, #3b82f6)',
+                    backgroundSize: '400% 400%',
+                    filter: 'blur(3px)',
+                  }}
+                  animate={{
+                    backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
+                    opacity: [0.3, 0.8, 0.3],
+                    rotate: [0, 1, -1, 0]
+                  }}
+                  transition={{
+                    duration: 4,
+                    repeat: Infinity,
+                    ease: "linear"
+                  }}
+                />
+              </div>
+            </motion.div>
+          </motion.div>
+
+          {/* Flying Video Playlist */}
+          <motion.div
+            initial={{ opacity: 0, x: 3000, rotateY: -180 }}
+            animate={{ opacity: 1, x: 0, rotateY: 0 }}
+            transition={{ duration: 2, type: "spring", stiffness: 40, delay: 0.5 }}
+            className="space-y-6"
+          >
+            <motion.h3 
+              className="text-3xl font-bold text-white mb-6"
+              initial={{ rotateY: -180, scale: 0.5 }}
+              animate={{ rotateY: 0, scale: 1 }}
+              transition={{ duration: 1, type: "spring" }}
+            >
+              Flying Videos
+            </motion.h3>
+            
+            {videos.map((video, index) => (
+              <FlyingVideoCard
+                key={video.id}
+                video={video}
+                index={index}
+                isActive={currentVideo === index}
+                onClick={() => handleVideoSelect(index)}
+              />
+            ))}
+          </motion.div>
+        </div>
+
+        {/* Flying Navigation Controls */}
+        <motion.div
+          className="flex justify-center mt-12 gap-6"
+          initial={{ opacity: 0, y: 200, rotateX: -90 }}
+          animate={{ opacity: 1, y: 0, rotateX: 0 }}
+          transition={{ duration: 1.5, delay: 1 }}
+        >
+          <motion.button
+            onClick={prevVideo}
+            className="p-4 bg-gradient-to-r from-blue-500/20 to-purple-500/20 backdrop-blur-sm rounded-full text-white hover:from-blue-500/30 hover:to-purple-500/30 transition-all duration-300 border border-white/20"
+            whileHover={{ 
+              scale: 1.3, 
+              rotateY: 360,
+            }}
+            whileTap={{ scale: 0.8 }}
+          >
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+            </svg>
+          </motion.button>
+          
+          <motion.button
+            onClick={nextVideo}
+            className="p-4 bg-gradient-to-r from-purple-500/20 to-pink-500/20 backdrop-blur-sm rounded-full text-white hover:from-purple-500/30 hover:to-pink-500/30 transition-all duration-300 border border-white/20"
+            whileHover={{ 
+              scale: 1.3, 
+              rotateY: 360,
+            }}
+            whileTap={{ scale: 0.8 }}
+          >
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
+          </motion.button>
+        </motion.div>
+      </div>
+    </motion.div>
+  );
+}
