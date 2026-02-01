@@ -5,6 +5,7 @@ import { useTranslations } from 'next-intl';
 import Hero from '@/components/automotive/Hero';
 import CarCard from '@/components/automotive/CarCard';
 import BrandBar from '@/components/automotive/BrandBar';
+import VideoShowcase from '@/components/automotive/VideoShowcase';
 import { cars } from '@/lib/cars';
 import { LuxurySection, LuxuryCard, RevealText } from '@/components/ui/luxury-section';
 
@@ -273,9 +274,9 @@ export default function HomePage() {
         </section>
       </LuxurySection>
 
-      {/* Full Screen Image Carousel */}
+      {/* Stunning Video Showcase */}
       <LuxurySection index={6} background="crystal" showParticles={true}>
-        <ImageCarousel />
+        <VideoShowcase />
       </LuxurySection>
     </>
   );
