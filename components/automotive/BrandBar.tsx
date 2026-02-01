@@ -85,7 +85,7 @@ export default function BrandBar() {
   }, [isPaused]);
 
   return (
-    <section className="h-28 bg-gray-800 border-y border-white/10 sticky top-0 z-50">
+    <section className="h-28 bg-gray-800 border-y border-white/10">
       <div className="max-w-7xl mx-auto h-full flex items-center">
         <div
           ref={brandBarRef}

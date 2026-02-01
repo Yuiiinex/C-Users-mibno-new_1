@@ -419,7 +419,7 @@ export default function FlyingVideoShowcase() {
     <motion.div 
       ref={containerRef}
       style={{ y, opacity }}
-      className="relative min-h-screen bg-gradient-to-br from-black via-gray-900 to-black overflow-hidden"
+      className="relative bg-gradient-to-br from-black via-gray-900 to-black overflow-hidden"
     >
       {/* Flying Background Elements */}
       <div className="absolute inset-0">
@@ -476,7 +476,7 @@ export default function FlyingVideoShowcase() {
       </div>
       
       {/* Main Content */}
-      <div className="relative z-10 w-full py-12">
+      <div className="relative z-10 w-full py-8">
         {/* Flying Video Grid */}
         <div className="w-full px-4 sm:px-6 lg:px-8">
           {/* Flying Video Playlist - Full Width Grid */}
