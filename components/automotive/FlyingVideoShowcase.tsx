@@ -138,7 +138,7 @@ const FlyingVideoCard = ({ video, index, isActive, onClick }: {
       {
         initial: { 
           x: 2000, 
-          y: Math.random() * 800 - 400, 
+          y: (index % 4) * 200 - 400, 
           rotateY: 180, 
           scale: 0.2,
           opacity: 0 
@@ -161,7 +161,7 @@ const FlyingVideoCard = ({ video, index, isActive, onClick }: {
       // From bottom, bouncing
       {
         initial: { 
-          x: Math.random() * 1000 - 500, 
+          x: (index % 3) * 300 - 300, 
           y: 2000, 
           rotate: -540, 
           scale: 0.4,
@@ -185,7 +185,7 @@ const FlyingVideoCard = ({ video, index, isActive, onClick }: {
       // From top, fluttering
       {
         initial: { 
-          x: Math.random() * 1200 - 600, 
+          x: (index % 5) * 240 - 480, 
           y: -1800, 
           rotate: 1080, 
           scale: 0.1,
@@ -222,21 +222,31 @@ const FlyingVideoCard = ({ video, index, isActive, onClick }: {
       whileInView="animate"
       viewport={{ once: true, margin: "-100px" }}
       whileHover={{ 
-        scale: 1.05,
+        scale: 1.1,
+        rotateZ: 5,
+        z: 50
       }}
       whileTap={{ 
         scale: 0.95,
+        rotateZ: -5
       }}
       onClick={onClick}
+      style={{
+        transformStyle: 'preserve-3d',
+        perspective: 1000,
+      }}
     >
       <motion.div
         className="relative rounded-2xl overflow-hidden cursor-pointer shadow-2xl"
         animate={isActive ? {
-          rotate: [0, 2, -2, 0],
+          rotate: [0, 3, -3, 0],
+          scale: [1, 1.02, 1],
+          y: [0, -5, 0],
         } : {}}
         transition={{
-          duration: 0.6,
-          ease: "easeInOut"
+          duration: 2,
+          ease: "easeInOut",
+          repeat: Infinity
         }}
       >
         {/* Video Thumbnail */}
