@@ -15,7 +15,11 @@ const nextConfig = {
   env: {
     _next_intl_trailing_slash: process.env._next_intl_trailing_slash ?? 'false',
   },
+  experimental: {
+    turbo: {
+      root: './',
+    },
+  },
 };
 
 module.exports = withNextIntl(nextConfig);
-
