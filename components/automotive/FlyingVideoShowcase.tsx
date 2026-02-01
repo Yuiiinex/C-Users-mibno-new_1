@@ -476,7 +476,7 @@ export default function FlyingVideoShowcase() {
       </div>
       
       {/* Main Content */}
-      <div className="relative z-10 w-full py-12 pt-40">
+      <div className="relative z-10 w-full py-12 pt-48">
         {/* Flying Video Grid */}
         <div className="w-full px-4 sm:px-6 lg:px-8">
           {/* Flying Video Playlist - Full Width Grid */}
