@@ -67,34 +67,32 @@ export default function HomePage() {
       <Hero />
       
       {/* All Cars Section */}
-      <LuxurySection index={1} background="luxury">
-        <section className="py-24 px-0 sm:px-0 lg:px-0 w-full">
-          <div className="w-full">
-            <RevealText delay={0.2}>
-              <div className="text-center mb-16">
-                <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-                  {t('featured.title')}
-                </h2>
-                <p className="text-xl text-white/70 max-w-2xl mx-auto">
-                  {t('featured.subtitle')}
-                </p>
-              </div>
-            </RevealText>
+      <section className="py-24 px-0 sm:px-0 lg:px-0 w-full bg-gradient-to-br from-black via-gray-900 to-black">
+        <div className="w-full">
+          <RevealText delay={0.2}>
+            <div className="text-center mb-16">
+              <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+                {t('featured.title')}
+              </h2>
+              <p className="text-xl text-white/70 max-w-2xl mx-auto">
+                {t('featured.subtitle')}
+              </p>
+            </div>
+          </RevealText>
 
-            {/* Flying Video Showcase - Full Container Width */}
-            <RevealText delay={0.4}>
-              <FlyingVideoShowcase />
-            </RevealText>
-          </div>
-        </section>
-      </LuxurySection>
+          {/* Flying Video Showcase - Full Container Width */}
+          <RevealText delay={0.4}>
+            <FlyingVideoShowcase />
+          </RevealText>
+        </div>
+      </section>
 
-      <LuxurySection index={2} background="gradient" showParticles={true}>
+      <LuxurySection index={1} background="gradient" showParticles={true}>
         <BrandBar />
       </LuxurySection>
 
       {/* Business Description Section */}
-      <LuxurySection index={3} background="luxury">
+      <LuxurySection index={2} background="luxury">
         <section className="py-24 px-4 sm:px-6 lg:px-8 min-h-screen">
           <div className="max-w-7xl mx-auto">
             <RevealText delay={0.6}>
@@ -140,7 +138,7 @@ export default function HomePage() {
       </LuxurySection>
 
       {/* Contact Form Section */}
-      <LuxurySection index={4} background="crystal">
+      <LuxurySection index={3} background="crystal">
         <section className="py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
           {/* Background Image with Gradient Overlay */}
           <div className="absolute inset-0 z-0">
@@ -254,7 +252,7 @@ export default function HomePage() {
     </LuxurySection>
 
       {/* Brand Message Section */}
-      <LuxurySection index={5} background="gradient">
+      <LuxurySection index={4} background="gradient">
         <section className="py-24 px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center">
             <RevealText delay={1.4}>
@@ -270,7 +268,7 @@ export default function HomePage() {
       </LuxurySection>
 
       {/* Original Image Carousel - First Section */}
-      <LuxurySection index={6} background="crystal" showParticles={true}>
+      <LuxurySection index={5} background="crystal" showParticles={true}>
         <ImageCarousel />
       </LuxurySection>
     </>
