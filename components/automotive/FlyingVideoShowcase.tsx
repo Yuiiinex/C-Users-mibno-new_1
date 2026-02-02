@@ -214,41 +214,11 @@ const FlyingVideoCard = ({ video, index, isActive, onClick }: {
   const flyingAnimation = getFlyingAnimation();
 
   return (
-    <motion.div
+    <div
       className="relative"
-      initial={flyingAnimation.initial}
-      animate={flyingAnimation.animate}
-      transition={flyingAnimation.transition as any}
-      whileInView="animate"
-      viewport={{ once: true, margin: "-100px" }}
-      whileHover={{ 
-        scale: 1.1,
-        rotateZ: 5,
-        z: 50
-      }}
-      whileTap={{ 
-        scale: 0.95,
-        rotateZ: -5
-      }}
       onClick={onClick}
-      style={{
-        transformStyle: 'preserve-3d',
-        perspective: 1000,
-      }}
     >
-      <motion.div
-        className="relative rounded-2xl overflow-hidden cursor-pointer shadow-2xl"
-        animate={isActive ? {
-          rotate: [0, 3, -3, 0],
-          scale: [1, 1.02, 1],
-          y: [0, -5, 0],
-        } : {}}
-        transition={{
-          duration: 2,
-          ease: "easeInOut",
-          repeat: Infinity
-        }}
-      >
+      <div className="relative rounded-2xl overflow-hidden cursor-pointer shadow-2xl">
         {/* Video Thumbnail */}
         <div className="relative aspect-video">
           <img
@@ -260,97 +230,15 @@ const FlyingVideoCard = ({ video, index, isActive, onClick }: {
           {/* Paper-like texture overlay */}
           <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
           
-          {/* Flying paper effect */}
-          <motion.div
-            className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-transparent"
-            animate={{
-              opacity: [0.1, 0.3, 0.1],
-              rotate: [0, 1, -1, 0],
-            }}
-            transition={{
-              duration: 4,
-              repeat: Infinity,
-              ease: "easeInOut"
-            }}
-            style={{
-              backdropFilter: 'blur(2px)',
-            }}
-          />
-          
           {/* Floating Play Button */}
-          <motion.div
-            className="absolute inset-0 flex items-center justify-center"
-            initial={{ scale: 0, rotate: -720 }}
-            animate={{ 
-              scale: 0.9,
-              rotate: -15
-            }}
-            whileHover={{
-              scale: 1.2,
-              rotate: 0
-            }}
-            transition={{
-              type: "spring",
-              stiffness: 300,
-              damping: 20
-            }}
-          >
-            <motion.div 
-              className="w-20 h-20 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center border-2 border-white/40 shadow-2xl"
-              whileHover={{ 
-                scale: 1.2,
-                rotate: 360
-              }}
-            >
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div className="w-20 h-20 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center border-2 border-white/40 shadow-2xl">
               <Play size={28} className="text-white ml-2" />
-            </motion.div>
-          </motion.div>
-          
-          {/* Video Info - Removed for cleaner look */}
-          
-          {/* Active Flying Indicator */}
-          {isActive && (
-            <motion.div
-              className="absolute top-4 right-4"
-              initial={{ scale: 0, rotate: -720 }}
-              animate={{ 
-                scale: [1, 1.3, 1],
-                rotate: 360
-              }}
-              transition={{
-                duration: 2,
-                repeat: Infinity,
-                ease: "easeInOut"
-              }}
-            >
-              <div className="w-6 h-6 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full shadow-lg shadow-blue-500/50" />
-            </motion.div>
-          )}
-          
-          {/* Flying Border Glow */}
-          {isActive && (
-            <motion.div
-              className="absolute inset-0 rounded-2xl pointer-events-none"
-              style={{
-                background: 'linear-gradient(45deg, #3b82f6, #8b5cf6, #ec4899, #06b6d4, #3b82f6)',
-                backgroundSize: '400% 400%',
-                filter: 'blur(3px)',
-              }}
-              animate={{
-                backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
-                opacity: [0.4, 1, 0.4],
-                rotate: [0, 1, -1, 0]
-              }}
-              transition={{
-                duration: 3,
-                repeat: Infinity,
-                ease: "linear"
-              }}
-            />
-          )}
+            </div>
+          </div>
         </div>
-      </motion.div>
-    </motion.div>
+      </div>
+    </div>
   );
 };
 
@@ -419,25 +307,17 @@ export default function FlyingVideoShowcase() {
     <motion.div 
       ref={containerRef}
       style={{ y, opacity }}
-      className="relative min-h-screen bg-gradient-to-br from-black via-gray-900 to-black overflow-hidden"
+      className="relative bg-gradient-to-br from-black via-gray-900 to-black overflow-hidden"
     >
-      {/* Flying Background Elements */}
-      <div className="absolute inset-0">
-        {/* Background gradient */}
-        <div
-          className="absolute inset-0 bg-gradient-to-r from-blue-900/20 via-purple-900/20 to-pink-900/20"
-        />
-      </div>
-      
       {/* Main Content */}
       <div className="relative z-10 w-full py-12 pt-48">
         {/* Flying Video Grid */}
         <div className="w-full px-4 sm:px-6 lg:px-8">
           {/* Flying Video Playlist - Full Width Grid */}
           <motion.div
-            initial={{ opacity: 0, x: 3000, rotateY: -180 }}
-            animate={{ opacity: 1, x: 0, rotateY: 0 }}
-            transition={{ duration: 2, type: "spring", stiffness: 40, delay: 0.5 }}
+            initial={{ opacity: 0, x: 0 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 1, delay: 0.5 }}
             className="w-full"
           >
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 w-full">
