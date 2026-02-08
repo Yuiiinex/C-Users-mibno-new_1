@@ -87,12 +87,12 @@ export default function HomePage() {
         </div>
       </section>
 
-      <LuxurySection index={1} background="gradient" showParticles={true}>
+      <section className="h-28 bg-gray-800 border-y border-white/10">
         <BrandBar />
-      </LuxurySection>
+      </section>
 
       {/* Business Description Section */}
-      <LuxurySection index={2} background="luxury">
+      <LuxurySection index={1} background="luxury">
         <section className="py-24 px-4 sm:px-6 lg:px-8 min-h-screen">
           <div className="max-w-7xl mx-auto">
             <RevealText delay={0.6}>
@@ -138,7 +138,7 @@ export default function HomePage() {
       </LuxurySection>
 
       {/* Contact Form Section */}
-      <LuxurySection index={3} background="crystal">
+      <LuxurySection index={2} background="crystal">
         <section className="py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
           {/* Background Image with Gradient Overlay */}
           <div className="absolute inset-0 z-0">
@@ -252,7 +252,7 @@ export default function HomePage() {
     </LuxurySection>
 
       {/* Brand Message Section */}
-      <LuxurySection index={4} background="gradient">
+      <LuxurySection index={3} background="gradient">
         <section className="py-24 px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center">
             <RevealText delay={1.4}>
@@ -268,7 +268,7 @@ export default function HomePage() {
       </LuxurySection>
 
       {/* Original Image Carousel - First Section */}
-      <LuxurySection index={5} background="crystal" showParticles={true}>
+      <LuxurySection index={4} background="crystal" showParticles={true}>
         <ImageCarousel />
       </LuxurySection>
     </>

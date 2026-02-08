@@ -644,79 +644,11 @@ const FlyingVideoCard = ({ video, index, isActive, onClick }: {
 
 
   return (
-
-    <motion.div
-
-
+    <div
       className="relative"
-
-      initial={flyingAnimation.initial}
-
-      animate={flyingAnimation.animate}
-
-      transition={flyingAnimation.transition as any}
-
-      whileInView="animate"
-
-      viewport={{ once: true, margin: "-100px" }}
-
-      whileHover={{ 
-
-        scale: 1.1,
-
-        rotateZ: 5,
-
-        z: 50
-
-      }}
-
-      whileTap={{ 
-
-        scale: 0.95,
-
-        rotateZ: -5
-
-      }}
-
-
       onClick={onClick}
-
-      style={{
-
-        transformStyle: 'preserve-3d',
-
-        perspective: 1000,
-
-      }}
-
     >
-
-      <motion.div
-
-        className="relative rounded-2xl overflow-hidden cursor-pointer shadow-2xl"
-
-        animate={isActive ? {
-
-          rotate: [0, 3, -3, 0],
-
-          scale: [1, 1.02, 1],
-
-          y: [0, -5, 0],
-
-        } : {}}
-
-        transition={{
-
-          duration: 2,
-
-          ease: "easeInOut",
-
-          repeat: Infinity
-
-        }}
-
-      >
-
+      <div className="relative rounded-2xl overflow-hidden cursor-pointer shadow-2xl">
 
         {/* Video Thumbnail */}
 
@@ -926,13 +858,9 @@ const FlyingVideoCard = ({ video, index, isActive, onClick }: {
 
 
         </div>
-
-      </motion.div>
-
-    </motion.div>
-
+      </div>
+    </div>
   );
-
 };
 
 
