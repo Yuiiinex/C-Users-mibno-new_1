@@ -15,6 +15,12 @@ export const metadata: Metadata = {
   title: 'WEXPRESSCARS - Excellence Automobile',
   description: 'Découvrez l\'art de la performance automobile',
   metadataBase: new URL('https://WEXPRESSCARS.ma'),
+  viewport: {
+    width: 'device-width',
+    initialScale: 1,
+    maximumScale: 5,
+    userScalable: true,
+  },
 };
 
 export function generateStaticParams() {

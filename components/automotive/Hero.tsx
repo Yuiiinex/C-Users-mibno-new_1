@@ -66,7 +66,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-6 tracking-tight whitespace-nowrap"
+            className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-white mb-4 sm:mb-6 tracking-tight px-4"
           >
             {t('title')}
           </motion.h1>
@@ -75,7 +75,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-xl md:text-2xl text-white/90 mb-8 max-w-2xl mx-auto"
+            className="text-base sm:text-lg md:text-xl lg:text-2xl text-white/90 mb-6 sm:mb-8 max-w-2xl mx-auto px-4"
           >
             {t('subtitle')}
           </motion.p>
@@ -87,7 +87,7 @@ export default function Hero() {
           >
             <Link
               href="/models"
-              className="inline-block px-8 py-4 bg-luxury-gold text-luxury-darker font-bold uppercase tracking-wider hover:bg-luxury-gold/90 transition-all duration-300 transform hover:scale-105"
+              className="inline-block px-6 py-3 sm:px-8 sm:py-4 bg-luxury-gold text-luxury-darker font-bold text-sm sm:text-base uppercase tracking-wider hover:bg-luxury-gold/90 transition-all duration-300 transform hover:scale-105"
             >
               {t('cta')}
             </Link>

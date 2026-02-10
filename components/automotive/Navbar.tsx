@@ -41,14 +41,14 @@ export default function Navbar() {
         : 'bg-gradient-to-b from-black/30 to-transparent backdrop-blur-sm'
         }`}
     >
-      <div className="w-full px-8 relative">
-        <div className="flex items-center justify-between h-20">
+      <div className="w-full px-4 sm:px-6 lg:px-8 relative">
+        <div className="flex items-center justify-between h-16 sm:h-20">
           {/* Left Side: Logo, Hamburger Menu, and Navigation */}
           <div className="flex items-center flex-1">
             {/* Mobile Menu Button - Only visible on mobile */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="md:hidden text-white focus:outline-none mr-4"
+              className="md:hidden text-white focus:outline-none mr-2 sm:mr-4"
               aria-label="Toggle menu"
             >
               <svg
@@ -69,11 +69,11 @@ export default function Navbar() {
             </button>
 
             {/* Logo */}
-            <Link href="/" className="mr-16 ml-24">
+            <Link href="/" className="mr-2 sm:mr-4 md:mr-16 lg:ml-24">
               <motion.img
                 src="/images/logo1.png"
                 alt="WExpressCars Logo"
-                className="h-24 w-44 object-contain"
+                className="h-12 w-24 sm:h-16 sm:w-32 md:h-20 md:w-40 lg:h-24 lg:w-44 object-contain"
                 whileHover={{ scale: 1.05 }}
                 transition={{ type: "spring", stiffness: 300, damping: 20 }}
               />
@@ -83,7 +83,7 @@ export default function Navbar() {
 
 
             {/* Desktop Navigation */}
-            <div className={`hidden md:flex items-center ${isRTL ? 'space-x-0 space-x-reverse' : 'space-x-8'} ${isRTL ? 'mr-48' : 'ml-48'}`}>
+            <div className={`hidden md:flex items-center ${isRTL ? 'space-x-0 space-x-reverse' : 'space-x-4 lg:space-x-8'} ${isRTL ? 'mr-8 lg:mr-48' : 'ml-8 lg:ml-48'}`}>
               {navItems.map((item, index) => (
                 <motion.div
                   key={item.href}
@@ -93,7 +93,7 @@ export default function Navbar() {
                 >
                   <Link
                     href={item.href}
-                    className={`relative px-4 py-2 text-white hover:text-luxury-gold transition-colors duration-200 font-medium text-lg md:text-lg uppercase tracking-wider group ${isRTL ? 'ml-6' : 'mr-6'
+                    className={`relative px-2 lg:px-4 py-2 text-white hover:text-luxury-gold transition-colors duration-200 font-medium text-sm lg:text-lg uppercase tracking-wider group ${isRTL ? 'ml-2 lg:ml-6' : 'mr-2 lg:mr-6'
                       }`}
                   >
                     <span className="relative">

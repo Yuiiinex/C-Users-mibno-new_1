@@ -67,14 +67,14 @@ export default function HomePage() {
       <Hero />
       
       {/* All Cars Section */}
-      <section className="py-24 px-0 sm:px-0 lg:px-0 w-full bg-gradient-to-br from-black via-gray-900 to-black">
+      <section className="py-12 sm:py-16 md:py-24 px-4 sm:px-6 lg:px-8 w-full bg-gradient-to-br from-black via-gray-900 to-black">
         <div className="w-full">
           <RevealText delay={0.2}>
-            <div className="text-center mb-16">
-              <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+            <div className="text-center mb-8 sm:mb-12 md:mb-16">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-3 sm:mb-4 px-4">
                 {t('featured.title')}
               </h2>
-              <p className="text-xl text-white/70 max-w-2xl mx-auto">
+              <p className="text-base sm:text-lg md:text-xl text-white/70 max-w-2xl mx-auto px-4">
                 {t('featured.subtitle')}
               </p>
             </div>
@@ -93,10 +93,10 @@ export default function HomePage() {
 
       {/* Business Description Section */}
       <LuxurySection index={1} background="luxury">
-        <section className="py-24 px-4 sm:px-6 lg:px-8 min-h-screen">
+        <section className="py-12 sm:py-16 md:py-24 px-4 sm:px-6 lg:px-8 min-h-screen">
           <div className="max-w-7xl mx-auto">
             <RevealText delay={0.6}>
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center min-h-[80vh]">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 md:gap-12 items-center min-h-[60vh] lg:min-h-[80vh]">
                 {/* Business Image */}
                 <div className="relative rounded-xl overflow-hidden h-full">
                   <LuxuryCard hover={true}>
@@ -110,23 +110,23 @@ export default function HomePage() {
                 </div>
 
                 {/* Business Text */}
-                <div className="space-y-6">
-                  <h2 className="text-3xl font-bold text-white mb-4">
+                <div className="space-y-4 sm:space-y-6">
+                  <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-3 sm:mb-4">
                     <span className="text-white">WEX</span>PRESSCARS Trusted in Luxury Transport Since 2009
                   </h2>
-                  <p className="text-lg text-white/80 leading-relaxed text-justify">
+                  <p className="text-base sm:text-lg text-white/80 leading-relaxed text-justify">
                     {t('business.description') || 'At WEXPRESSCARS, we specialize in premium vehicle logistics powered by smart IT systems, ensuring high-value cars are transported safely and efficiently throughout France and the EU. With years of experience and cutting-edge tracking technology, we bring reliability and precision to every delivery.'}
                   </p>
                   
                   <RevealText delay={0.8}>
-                    <div className="grid grid-cols-2 gap-6 mt-8">
+                    <div className="grid grid-cols-2 gap-4 sm:gap-6 mt-6 sm:mt-8">
                       <div className="text-center">
-                        <div className="text-3xl font-bold text-white mb-2">100%</div>
-                        <div className="text-white/70">{t('business.stats.reliability') || 'Reliability'}</div>
+                        <div className="text-2xl sm:text-3xl font-bold text-white mb-1 sm:mb-2">100%</div>
+                        <div className="text-sm sm:text-base text-white/70">{t('business.stats.reliability') || 'Reliability'}</div>
                       </div>
                       <div className="text-center">
-                        <div className="text-3xl font-bold text-white mb-2">24/7</div>
-                        <div className="text-white/70">{t('business.stats.service') || 'Service'}</div>
+                        <div className="text-2xl sm:text-3xl font-bold text-white mb-1 sm:mb-2">24/7</div>
+                        <div className="text-sm sm:text-base text-white/70">{t('business.stats.service') || 'Service'}</div>
                       </div>
                     </div>
                   </RevealText>
@@ -139,7 +139,7 @@ export default function HomePage() {
 
       {/* Contact Form Section */}
       <LuxurySection index={2} background="crystal">
-        <section className="py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+        <section className="py-12 sm:py-16 md:py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
           {/* Background Image with Gradient Overlay */}
           <div className="absolute inset-0 z-0">
             <img 
@@ -152,18 +152,18 @@ export default function HomePage() {
           
           <div className="max-w-4xl mx-auto relative z-10">
             <RevealText delay={1.0}>
-              <div className="text-center mb-16">
-                <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+              <div className="text-center mb-8 sm:mb-12 md:mb-16">
+                <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-3 sm:mb-4 px-4">
                   {tContact('title')}
                 </h2>
-                <p className="text-xl text-white/70 max-w-2xl mx-auto">
+                <p className="text-base sm:text-lg md:text-xl text-white/70 max-w-2xl mx-auto px-4">
                   {tContact('subtitle')}
                 </p>
               </div>
             </RevealText>
 
             <RevealText delay={1.2}>
-              <div className="bg-black/30 backdrop-blur-sm rounded-xl border border-white/10 p-8">
+              <div className="bg-black/30 backdrop-blur-sm rounded-xl border border-white/10 p-4 sm:p-6 md:p-8">
                 <form className="space-y-6">
                   <div className="space-y-6">
                     <div>
