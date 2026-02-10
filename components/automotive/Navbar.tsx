@@ -66,11 +66,12 @@ export default function Navbar() {
             </button>
 
             {/* Centered Logo - MUCH BIGGER */}
-            <Link href="/" className="absolute left-1/2 transform -translate-x-1/2">
+            <Link href="/" className="absolute left-1/2 transform -translate-x-1/2 z-20">
               <img
                 src="/images/logo1.png"
                 alt="WExpressCars Logo"
-                className="h-20 w-40 sm:h-24 sm:w-48 object-contain transition-transform duration-200 hover:scale-105"
+                className="h-28 w-56 sm:h-32 sm:w-64 object-contain transition-transform duration-200 hover:scale-105"
+                style={{ marginTop: '-8px', marginBottom: '-8px' }}
               />
             </Link>
 
@@ -83,11 +84,12 @@ export default function Navbar() {
           {/* Desktop Layout: Logo on left, Navigation, Language Switcher */}
           <div className="hidden md:flex items-center flex-1">
             {/* Logo */}
-            <Link href="/" className="mr-2 sm:mr-4 md:mr-16 lg:ml-24">
+            <Link href="/" className="mr-2 sm:mr-4 md:mr-16 lg:ml-24 relative z-20">
               <img
                 src="/images/logo1.png"
                 alt="WExpressCars Logo"
-                className="h-24 w-48 lg:h-28 lg:w-56 object-contain transition-transform duration-200 hover:scale-105"
+                className="h-32 w-64 lg:h-36 lg:w-72 object-contain transition-transform duration-200 hover:scale-105"
+                style={{ marginTop: '-12px', marginBottom: '-12px' }}
               />
             </Link>
 

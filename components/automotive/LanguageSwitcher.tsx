@@ -99,7 +99,7 @@ export default function LanguageSwitcher() {
                       <div className="w-full h-full flex">
                         <div className="w-1/4 bg-[#FF0000]" />
                         <div className="w-3/4 flex flex-col">
-                          <div className="h-1/3 bg-[#00FF00]" />
+                          <div className="h-1/3 bg-[#00732F]" />
                           <div className="h-1/3 bg-white" />
                           <div className="h-1/3 bg-black" />
                         </div>
@@ -115,7 +115,7 @@ export default function LanguageSwitcher() {
 
         {isOpen && (
           <div
-            className={`absolute top-12 ${isRTL ? 'left-0' : 'right-0'} flex flex-col space-y-2 bg-luxury-darker/95 rounded-lg px-3 py-2 backdrop-blur-md shadow-xl border border-white/10 z-50`}
+            className={`absolute top-12 ${isRTL ? 'left-0' : 'right-0'} flex flex-col space-y-1 bg-luxury-darker/95 rounded-lg px-2 py-1.5 backdrop-blur-md shadow-xl border border-white/10 z-50`}
           >
             {locales
               .filter((loc) => loc !== locale)
@@ -124,7 +124,7 @@ export default function LanguageSwitcher() {
                 return (
                   <div
                     key={loc}
-                    className={`flex items-center ${isArabic ? 'space-x-reverse space-x-3' : 'space-x-3'} min-w-[160px] cursor-pointer hover:bg-white/10 rounded px-3 py-2 transition-colors`}
+                    className={`flex items-center gap-2 min-w-[130px] cursor-pointer hover:bg-white/10 rounded px-2 py-1.5 transition-colors`}
                     onClick={() => {
                       setIsOpen(false);
                       switchLocale(loc);
@@ -139,7 +139,7 @@ export default function LanguageSwitcher() {
                       }}
                       label={localeNames[loc]}
                     />
-                    <span className={`text-sm text-white font-medium ${isArabic ? 'pr-2' : 'pl-2'}`}>
+                    <span className="text-sm text-white font-medium">
                       {localeNames[loc]}
                     </span>
                   </div>
@@ -151,29 +151,31 @@ export default function LanguageSwitcher() {
 
       {/* Desktop: show all flags with text */}
       <div className="hidden md:flex items-center space-x-3">
-        {locales.map((loc) => (
-          <div
-            key={loc}
-            className={`flex items-center space-x-2 px-3 py-2 rounded-lg transition-all duration-200 cursor-pointer ${
-              locale === loc 
-                ? 'bg-luxury-gold/20 border border-luxury-gold/50' 
-                : 'hover:bg-white/10'
-            }`}
-            onClick={() => switchLocale(loc)}
-          >
-            <FlagButton
-              locale={loc}
-              isActive={locale === loc}
+        {locales.map((loc) => {
+          return (
+            <div
+              key={loc}
+              className={`flex items-center gap-3 px-3 py-2 rounded-lg transition-all duration-200 cursor-pointer ${
+                locale === loc 
+                  ? 'bg-luxury-gold/20 border border-luxury-gold/50' 
+                  : 'hover:bg-white/10'
+              }`}
               onClick={() => switchLocale(loc)}
-              label={localeNames[loc]}
-            />
-            <span className={`text-sm font-medium px-1 ${
-              locale === loc ? 'text-luxury-gold' : 'text-white/80'
-            }`}>
-              {localeNames[loc]}
-            </span>
-          </div>
-        ))}
+            >
+              <FlagButton
+                locale={loc}
+                isActive={locale === loc}
+                onClick={() => switchLocale(loc)}
+                label={localeNames[loc]}
+              />
+              <span className={`text-sm font-medium ${
+                locale === loc ? 'text-luxury-gold' : 'text-white/80'
+              }`}>
+                {localeNames[loc]}
+              </span>
+            </div>
+          );
+        })}
       </div>
     </div>
   );

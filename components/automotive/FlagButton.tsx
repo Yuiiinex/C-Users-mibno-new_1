@@ -50,7 +50,7 @@ export default function FlagButton({ locale, isActive, onClick, label }: FlagBut
             <div className="w-1/4 bg-[#FF0000]" />
             {/* Three horizontal stripes on right */}
             <div className="w-3/4 flex flex-col">
-              <div className="h-1/3 bg-[#00FF00]" />
+              <div className="h-1/3 bg-[#00732F]" />
               <div className="h-1/3 bg-white" />
               <div className="h-1/3 bg-black" />
             </div>
