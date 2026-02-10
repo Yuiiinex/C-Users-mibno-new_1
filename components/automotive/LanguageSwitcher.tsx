@@ -49,17 +49,17 @@ export default function LanguageSwitcher() {
 
   return (
     <div className="relative">
-      {/* Mobile: only current flag, dropdown with other flags */}
+      {/* Mobile: only current flag, NO TEXT */}
       <div className="relative md:hidden flex items-center">
         <div
-          className="flex items-center space-x-3 cursor-pointer px-2 py-2"
+          className="flex items-center cursor-pointer p-1"
           onClick={() => setIsOpen((prev) => !prev)}
         >
           <div className="relative">
             <button
               className={`
                 relative
-                w-9 h-9 rounded-full
+                w-8 h-8 rounded-full
                 transition-all duration-200
                 border-2 overflow-hidden
                 border-luxury-gold shadow-lg shadow-luxury-gold/50 ring-2 ring-luxury-gold/30
@@ -111,40 +111,40 @@ export default function LanguageSwitcher() {
               })()}
             </button>
           </div>
-          <span className="text-sm text-white/80 font-medium px-1">
-            {localeNames[locale]}
-          </span>
         </div>
 
         {isOpen && (
           <div
-            className={`absolute top-12 ${isRTL ? 'left-0' : 'right-0'} flex flex-col space-y-2 bg-luxury-darker/90 rounded-lg px-3 py-2 backdrop-blur-sm shadow-lg z-50`}
+            className={`absolute top-12 ${isRTL ? 'left-0' : 'right-0'} flex flex-col space-y-2 bg-luxury-darker/95 rounded-lg px-3 py-2 backdrop-blur-md shadow-xl border border-white/10 z-50`}
           >
             {locales
               .filter((loc) => loc !== locale)
-              .map((loc) => (
-                <div
-                  key={loc}
-                  className="flex items-center w-full min-w-[140px] cursor-pointer hover:bg-white/10 rounded px-3 py-2 transition-colors"
-                  onClick={() => {
-                    setIsOpen(false);
-                    switchLocale(loc);
-                  }}
-                >
-                  <FlagButton
-                    locale={loc}
-                    isActive={false}
+              .map((loc) => {
+                const isArabic = loc.startsWith('ar');
+                return (
+                  <div
+                    key={loc}
+                    className={`flex items-center ${isArabic ? 'space-x-reverse space-x-3' : 'space-x-3'} min-w-[160px] cursor-pointer hover:bg-white/10 rounded px-3 py-2 transition-colors`}
                     onClick={() => {
                       setIsOpen(false);
                       switchLocale(loc);
                     }}
-                    label={localeNames[loc]}
-                  />
-                  <span className="text-sm text-white/80 font-medium px-1">
-                    {localeNames[loc]}
-                  </span>
-                </div>
-              ))}
+                  >
+                    <FlagButton
+                      locale={loc}
+                      isActive={false}
+                      onClick={() => {
+                        setIsOpen(false);
+                        switchLocale(loc);
+                      }}
+                      label={localeNames[loc]}
+                    />
+                    <span className={`text-sm text-white font-medium ${isArabic ? 'pr-2' : 'pl-2'}`}>
+                      {localeNames[loc]}
+                    </span>
+                  </div>
+                );
+              })}
           </div>
         )}
       </div>

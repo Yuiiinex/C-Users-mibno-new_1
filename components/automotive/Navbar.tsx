@@ -32,23 +32,20 @@ export default function Navbar() {
   ];
 
   return (
-    <motion.nav
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.5 }}
+    <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
         ? 'bg-gradient-to-b from-black/80 to-transparent backdrop-blur-md shadow-lg'
         : 'bg-gradient-to-b from-black/30 to-transparent backdrop-blur-sm'
         }`}
     >
       <div className="w-full px-4 sm:px-6 lg:px-8 relative">
-        <div className="flex items-center justify-between h-16 sm:h-20">
-          {/* Left Side: Logo, Hamburger Menu, and Navigation */}
-          <div className="flex items-center flex-1">
-            {/* Mobile Menu Button - Only visible on mobile */}
+        <div className="flex items-center justify-between h-20 sm:h-24">
+          {/* Mobile Layout: Hamburger | Centered Logo | Flag */}
+          <div className="md:hidden flex items-center justify-between w-full">
+            {/* Mobile Menu Button */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="md:hidden text-white focus:outline-none mr-2 sm:mr-4"
+              className="text-white focus:outline-none z-10"
               aria-label="Toggle menu"
             >
               <svg
@@ -68,14 +65,29 @@ export default function Navbar() {
               </svg>
             </button>
 
-            {/* Logo */}
-            <Link href="/" className="mr-2 sm:mr-4 md:mr-16 lg:ml-24">
-              <motion.img
+            {/* Centered Logo - Much Bigger */}
+            <Link href="/" className="absolute left-1/2 transform -translate-x-1/2">
+              <img
                 src="/images/logo1.png"
                 alt="WExpressCars Logo"
-                className="h-12 w-24 sm:h-16 sm:w-32 md:h-20 md:w-40 lg:h-24 lg:w-44 object-contain"
-                whileHover={{ scale: 1.05 }}
-                transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                className="h-16 w-32 sm:h-20 sm:w-40 object-contain transition-transform duration-200 hover:scale-105"
+              />
+            </Link>
+
+            {/* Language Switcher (right side) */}
+            <div className="z-10">
+              <LanguageSwitcher />
+            </div>
+          </div>
+
+          {/* Desktop Layout: Logo on left, Navigation, Language Switcher */}
+          <div className="hidden md:flex items-center flex-1">
+            {/* Logo */}
+            <Link href="/" className="mr-2 sm:mr-4 md:mr-16 lg:ml-24">
+              <img
+                src="/images/logo1.png"
+                alt="WExpressCars Logo"
+                className="h-20 w-40 lg:h-24 lg:w-44 object-contain transition-transform duration-200 hover:scale-105"
               />
             </Link>
 
@@ -85,12 +97,7 @@ export default function Navbar() {
             {/* Desktop Navigation */}
             <div className={`hidden md:flex items-center ${isRTL ? 'space-x-0 space-x-reverse' : 'space-x-4 lg:space-x-8'} ${isRTL ? 'mr-8 lg:mr-48' : 'ml-8 lg:ml-48'}`}>
               {navItems.map((item, index) => (
-                <motion.div
-                  key={item.href}
-                  initial={{ opacity: 0, y: -20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.1 }}
-                >
+                <div key={item.href}>
                   <Link
                     href={item.href}
                     className={`relative px-2 lg:px-4 py-2 text-white hover:text-luxury-gold transition-colors duration-200 font-medium text-sm lg:text-lg uppercase tracking-wider group ${isRTL ? 'ml-2 lg:ml-6' : 'mr-2 lg:mr-6'
@@ -101,13 +108,13 @@ export default function Navbar() {
                       <span className="absolute left-0 -bottom-1 w-0 h-[1px] bg-luxury-gold transition-all duration-300 group-hover:w-full"></span>
                     </span>
                   </Link>
-                </motion.div>
+                </div>
               ))}
             </div>
           </div>
 
-          {/* Right Side: Language Switcher */}
-          <div className="flex items-center">
+          {/* Right Side: Language Switcher - Desktop only */}
+          <div className="hidden md:flex items-center">
             <LanguageSwitcher />
           </div>
         </div>
@@ -119,11 +126,8 @@ export default function Navbar() {
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            className={`md:hidden pb-4 border-t border-white/10 mt-4 ${isRTL ? 'pr-4' : 'pl-4'}`}
+          <div
+            className={`md:hidden pb-4 border-t border-white/10 mt-4 ${isRTL ? 'pr-4' : 'pl-4'} animate-fadeIn`}
           >
             <div className="flex flex-col space-y-4 pt-4">
               {navItems.map((item) => (
@@ -140,10 +144,10 @@ export default function Navbar() {
                 </Link>
               ))}
             </div>
-          </motion.div>
+          </div>
         )}
       </div>
-    </motion.nav>
+    </nav>
   );
 }
 
