@@ -87,9 +87,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="h-28 bg-gray-800 border-y border-white/10">
-        <BrandBar />
-      </section>
+      <BrandBar />
 
       {/* Business Description Section */}
       <LuxurySection index={1} background="luxury">

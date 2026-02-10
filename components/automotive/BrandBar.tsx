@@ -85,7 +85,7 @@ export default function BrandBar() {
   }, [isPaused]);
 
   return (
-    <section className="h-28 bg-gray-800 border-y border-white/10">
+    <section className="h-14 bg-gray-800 border-y border-white/10">
       <div className="max-w-7xl mx-auto h-full flex items-center">
         <div
           ref={brandBarRef}
@@ -99,13 +99,13 @@ export default function BrandBar() {
             }
           `}</style>
 
-          <div className="flex space-x-4 px-8">
+          <div className="flex space-x-2 px-4">
             {/* First set */}
-            <div ref={firstSetRef} className="flex space-x-4">
+            <div ref={firstSetRef} className="flex space-x-2">
               {[...Array(11)].map((_, i) => (
                 <div
                   key={i}
-                  className="w-24 h-24 rounded overflow-hidden flex-shrink-0 hover:opacity-80 transition-opacity"
+                  className="w-12 h-12 rounded overflow-hidden flex-shrink-0 hover:opacity-80 transition-opacity"
                   onClick={(e) => handleLogoClick(i + 1, e)}
                 >
                   <img
@@ -118,11 +118,11 @@ export default function BrandBar() {
             </div>
 
             {/* Duplicate set */}
-            <div className="flex space-x-4">
+            <div className="flex space-x-2">
               {[...Array(11)].map((_, i) => (
                 <div
                   key={i + 11}
-                  className="w-24 h-24 rounded overflow-hidden flex-shrink-0 hover:opacity-80 transition-opacity"
+                  className="w-12 h-12 rounded overflow-hidden flex-shrink-0 hover:opacity-80 transition-opacity"
                   onClick={(e) => handleLogoClick(i + 1, e)}
                 >
                   <img

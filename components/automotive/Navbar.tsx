@@ -39,7 +39,7 @@ export default function Navbar() {
         }`}
     >
       <div className="w-full px-4 sm:px-6 lg:px-8 relative">
-        <div className="flex items-center justify-between h-20 sm:h-24">
+        <div className="flex items-center justify-between h-24 sm:h-28">
           {/* Mobile Layout: Hamburger | Centered Logo | Flag */}
           <div className="md:hidden flex items-center justify-between w-full">
             {/* Mobile Menu Button */}
@@ -65,12 +65,12 @@ export default function Navbar() {
               </svg>
             </button>
 
-            {/* Centered Logo - Much Bigger */}
+            {/* Centered Logo - MUCH BIGGER */}
             <Link href="/" className="absolute left-1/2 transform -translate-x-1/2">
               <img
                 src="/images/logo1.png"
                 alt="WExpressCars Logo"
-                className="h-16 w-32 sm:h-20 sm:w-40 object-contain transition-transform duration-200 hover:scale-105"
+                className="h-20 w-40 sm:h-24 sm:w-48 object-contain transition-transform duration-200 hover:scale-105"
               />
             </Link>
 
@@ -87,7 +87,7 @@ export default function Navbar() {
               <img
                 src="/images/logo1.png"
                 alt="WExpressCars Logo"
-                className="h-20 w-40 lg:h-24 lg:w-44 object-contain transition-transform duration-200 hover:scale-105"
+                className="h-24 w-48 lg:h-28 lg:w-56 object-contain transition-transform duration-200 hover:scale-105"
               />
             </Link>
 
